@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en"><head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../uibuilder/images/node-blue.ico">
+
+    <title>Blank template - Node-RED uibuilder</title>
+    <meta name="description" content="Node-RED uibuilder - Blank template">
+
+    <!-- Your own CSS (defaults to loading uibuilders css)-->
+    <link type="text/css" rel="stylesheet" href="./index.css" media="all">
+
+    <!-- #region Supporting Scripts. These MUST be in the right order. Note no leading / -->
+    <script defer src="../uibuilder/uibuilder.iife.min.js"></script>
+    <!-- <script defer src="./index.js">/* OPTIONAL: Put your custom code in that */</script> -->
+    <!-- #endregion -->
+
+</head><body class="uib">
+    
+    <h1 class="with-subtitle">SETTINGS</h1>
+
+    <div id="more"><!-- '#more' is used as a parent for dynamic HTML content in examples --></div>
+   
+<!--LOCATION to Timezone 0 to 3-->
+
+<div id="location">
+        <h1 id="LOCATION">Location</h1>
+    <div id="first">
+        <p>Location Name: <strong id="locationName"></strong></p>
+    </div>
+    <div id="second">
+        <p>ZIP Code: <strong id="zipCode"></strong></p>
+    </div>
+    <div id="third">
+        <p>Phone Number: <strong id="phoneNumber"></strong></p>
+    </div>
+    <div id="forth">
+        <p>Timezone: <strong id="timeZone"></strong></p>
+    </div>
+</div>
+
+<!--Critical Alert to Whatsapp 4 TO 6-->
+
+<div id="alerts">
+    <h1 id="ALERTS">SystemWide Settings</h1>
+    <div>
+        <p>Critical Alerts: <strong id="criticalAlerts"></strong></p>
+    </div>
+    <div>
+        <p>Use SMS: <strong id="useSMS"></strong></p>
+    </div>
+    <div>
+        <p>Use WhatsApp: <strong id="useWhatsapp"></strong></p>
+    </div>
+</div>
+
+<!--Threshold 7 TO 14-->
+
+<div id="Days">
+    <h1 id="OPENING">Opening Hours</h1>
+    <div>
+        <p>Is Monday Open?<strong id="isMondayOpen"></strong></p>
+    </div>
+    <div>
+        <p>Monday Opening Time <strong id="mondayOpening"></strong></p>
+    </div>
+    <div>
+        <p>Monday Closing Time<strong id="mondayClosing"></strong></p>
+    </div>
+    
+    <div>
+        <p>Is Tuesday Open?<strong id="isTuesdayOpen"></strong></p>
+    </div>
+    <div>
+        <p>Tuesday Opening Time <strong id="tuesdayOpening"></strong></p>
+    </div>
+    <div>
+        <p>Tuesday Closing Time<strong id="tuesdayClosing"></strong></p>
+    </div>
+
+    <div>
+        <p>Is Wednesday Open?<strong id="isWednesdayOpen"></strong></p>
+    </div>
+    <div>
+        <p>Wednesday Opening Time <strong id="wednesdayOpening"></strong></p>
+    </div>
+    <div>
+        <p>Wednesday Closing Time<strong id="wednesdayClosing"></strong></p>
+    </div>
+
+    <div>
+        <p>Is Thursday Open?<strong id="isThursdayOpen"></strong></p>
+    </div>
+    <div>
+        <p>Thursday Opening Time <strong id="thursdayOpening"></strong></p>
+    </div>
+    <div>
+        <p>Thursday Closing Time<strong id="thursdayClosing"></strong></p>
+    </div>
+
+    <div>
+        <p>Is Friday Open?<strong id="isFridayOpen"></strong></p>
+    </div>
+    <div>
+        <p>Friday Opening Time <strong id="fridayOpening"></strong></p>
+    </div>
+    <div>
+        <p>Friday Closing Time<strong id="fridayClosing"></strong></p>
+    </div>
+
+    <div>
+        <p>Is Saturday Open?<strong id="isSaturdayOpen"></strong></p>
+    </div>
+    <div>
+        <p>Saturday Opening Time <strong id="saturdayOpening"></strong></p>
+    </div>
+    <div>
+        <p>Saturday Closing Time<strong id="saturdayClosing"></strong></p>
+    </div>
+
+    <div>
+        <p>Is Sunday Open?<strong id="isSundayOpen"></strong></p>
+    </div>
+    <div>
+        <p>Sunday Opening Time <strong id="sundayOpening"></strong></p>
+    </div>
+    <div>
+        <p>Sunday Closing Time<strong id="sundayClosing"></strong></p>
+    </div>
+</div>
+
+<div id="threshold">
+    <h1 id="THRESHOLD">Threshold</h1>
+    <div id="temp"><p>Temperature: <br><i id="minTemperature">Min.</i><br><i id="maxTemperature">Max.</i></p></div>
+    <div>
+        <div><p>Humidity: <br><i id="minHumidity">Min.</i><br><i id="maxHumidity">Max.</i></p></div>
+    </div>
+    <div>
+        <p>Pressure Change: <strong id="pressureChange"></strong></p>
+    </div>
+    <div>
+        <p>IAQ Threshold: <strong id="iaqThreshold"></strong></p>
+    </div>
+    <div>
+        <p>Light Threshold: <strong id="lightThreshold"></strong></p>
+    </div>
+    <div>
+        <p>Battery Threshold: <strong id="batteryThreshold"></strong></p>
+    </div>
+</div>
+
+
+
+</body>
+</html>

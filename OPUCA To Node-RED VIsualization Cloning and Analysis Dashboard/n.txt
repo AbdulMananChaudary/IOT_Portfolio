@@ -1,0 +1,14 @@
+1704054587547
+1704054588557
+{"co2":12,"Totalizer_Weekly":100,"Totalizer_Monthly":1000,"Error":"Error Occured"}
+{"co2":12,"Totalizer_Weekly":100,"Totalizer_Monthly":1000,"Error":"Error Occured"}
+{"co2":12,"Totalizer_Weekly":100,"Totalizer_Monthly":1000,"Error":"Error Occured"}
+{"co2":12,"Totalizer_Weekly":100,"Totalizer_Monthly":1000,"Error":"Error Occured"}
+{"co2":12,"Totalizer_Weekly":100,"Totalizer_Monthly":1000,"Error":"Error Occured"}
+{"co2":12,"Totalizer_Weekly":100,"Totalizer_Monthly":1000,"Error":"Error Occured"}
+{"co2":12,"Totalizer_Weekly":100,"Totalizer_Monthly":1000,"Error":"Error Occured"}
+{"co2":12,"Totalizer_Weekly":100,"Totalizer_Monthly":1000,"Error":"Error Occured"}
+{"co2":12,"Totalizer_Weekly":100,"Totalizer_Monthly":1000,"Error":"Error Occured"}
+{"co2":12,"Totalizer_Weekly":100,"Totalizer_Monthly":1000,"Error":"Error Occured"}
+{"co2":12,"Totalizer_Weekly":100,"Totalizer_Monthly":1000,"Error":"Error Occured"}
+{"co2":12,"Totalizer_Weekly":100,"Totalizer_Monthly":1000,"Error":"Error Occured"}

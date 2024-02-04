@@ -1,0 +1,12 @@
+body{
+    text-align: center;
+}
+#nameInput{
+    border-radius: 5px;
+}
+#nameInput:hover,#emailInput:hover,#phoneInput:hover,#textInput:hover{
+    background-color: rgb(234, 230, 229);
+}
+.form-elements{
+    padding-left: 400px;
+}

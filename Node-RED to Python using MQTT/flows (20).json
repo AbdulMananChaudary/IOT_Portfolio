@@ -1,0 +1,217 @@
+[
+    {
+        "id": "d2b03f174ace0453",
+        "type": "mqtt out",
+        "z": "dd773b94361bf9a0",
+        "name": "",
+        "topic": "/aAa",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "61321c92dd757d7c",
+        "x": 510,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "0cc0e8b79145d519",
+        "type": "inject",
+        "z": "dd773b94361bf9a0",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "A",
+        "payload": "a",
+        "payloadType": "str",
+        "x": 250,
+        "y": 180,
+        "wires": [
+            [
+                "d2b03f174ace0453"
+            ]
+        ]
+    },
+    {
+        "id": "22f26cb94697f180",
+        "type": "mqtt out",
+        "z": "dd773b94361bf9a0",
+        "name": "",
+        "topic": "/bBb",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "61321c92dd757d7c",
+        "x": 510,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "cbde6da72fe988cb",
+        "type": "inject",
+        "z": "dd773b94361bf9a0",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "2",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "B",
+        "payload": "sherry",
+        "payloadType": "str",
+        "x": 260,
+        "y": 240,
+        "wires": [
+            [
+                "22f26cb94697f180"
+            ]
+        ]
+    },
+    {
+        "id": "9a9428737e99cff7",
+        "type": "mqtt out",
+        "z": "dd773b94361bf9a0",
+        "name": "",
+        "topic": "/cCc",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "61321c92dd757d7c",
+        "x": 510,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "335b7aceda34bc7c",
+        "type": "inject",
+        "z": "dd773b94361bf9a0",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "C",
+        "payload": "c",
+        "payloadType": "str",
+        "x": 250,
+        "y": 300,
+        "wires": [
+            [
+                "9a9428737e99cff7"
+            ]
+        ]
+    },
+    {
+        "id": "9853ab815c5a3257",
+        "type": "mqtt out",
+        "z": "dd773b94361bf9a0",
+        "name": "",
+        "topic": "/dDd",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "61321c92dd757d7c",
+        "x": 510,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "a1d56898490d3178",
+        "type": "inject",
+        "z": "dd773b94361bf9a0",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "4",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "D",
+        "payload": "d",
+        "payloadType": "str",
+        "x": 250,
+        "y": 360,
+        "wires": [
+            [
+                "9853ab815c5a3257"
+            ]
+        ]
+    },
+    {
+        "id": "61321c92dd757d7c",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "test.mosquitto.org",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]

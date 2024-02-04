@@ -1,0 +1,47 @@
+/* Load defaults from `<userDir>/node_modules/node-red-contrib-uibuilder/front-end/uib-brand.css`
+ * This version auto-adjusts for light/dark browser settings but might not be as complete.
+ */
+@import url("../uibuilder/uib-brand.css");
+
+/* OR, load the defaults from the older `<userDir>/node_modules/node-red-contrib-uibuilder/front-end/uib-styles.css` */
+/* @import url("../uibuilder/uib-styles.css"); */
+#location{
+    width:650px;
+    height:420px;
+    border:2px solid gray;
+    border-radius: 10px;
+    float:right;
+    margin-top:30px;
+  
+}
+
+#alerts{
+    width:650px;
+    height:420px;
+    border:2px solid gray;
+    border-radius: 10px;
+    margin-top:30px;
+}
+#ALERTS, #OPENING, #THRESHOLD, #LOCATION{
+    margin-left:30px;
+}
+
+#threshold{
+    width:650px;
+    height:700px;
+    border:2px solid gray;
+    border-radius: 10px;
+    margin-top:30px;
+    float:right;
+    
+}
+
+#Days{
+    width:650px;
+    height:1800px;
+    border:2px solid gray;
+    border-radius: 10px;
+    margin-top:30px;
+    float:left;
+}
+

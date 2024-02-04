@@ -1,0 +1,115 @@
+[
+    {
+        "id": "0aa31213121aa4b6",
+        "type": "inject",
+        "z": "b3adf53222b0de7f",
+        "name": "Second Dataset",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "Second Dataset",
+        "payload": "{\"date\":\"2023-09-12T10:41:16Z\",\"device\":{\"sn\":\"633578\",\"prod\":92,\"rev\":2,\"fw\":\"1.9\",\"iccid\":\"89882280666087281006\",\"imei\":\"350457792810655\"},\"sqn\":288,\"reason\":50,\"analogues\":[{\"id\":1,\"val\":5398},{\"id\":3,\"val\":1600},{\"id\":4,\"val\":7},{\"id\":5,\"val\":5082}],\"inputs\":3,\"outputs\":0,\"status\":3,\"fields\":{\"taglist\":{\"tags\":[{\"tt\":11,\"reason\":0,\"rssi\":-37,\"data\":\"b6neJgLsUCBNQUcgQzAzNjFBAAAAAAAA\"},{\"tt\":11,\"reason\":0,\"rssi\":-42,\"data\":\"cZk+9+vgUCBNQUcgQzAzNEMwAAAAAAAA\"}]}}}",
+        "payloadType": "json",
+        "x": 140,
+        "y": 160,
+        "wires": [
+            [
+                "17f0c6173854500b"
+            ]
+        ]
+    },
+    {
+        "id": "02675320a5e5c9fe",
+        "type": "inject",
+        "z": "b3adf53222b0de7f",
+        "name": "First Dataset",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"date\":\"2023-09-12T10:37:31Z\",\"device\":{\"sn\":\"631903\",\"prod\":92,\"rev\":2,\"fw\":\"1.9\",\"iccid\":\"89882280666087281014\",\"imei\":\"350457792811455\"},\"sqn\":274,\"reason\":2,\"lat\":52.548241,\"lng\":-8.8550864,\"posAcc\":20,\"posInfo\":{\"Src\":6},\"analogues\":[{\"id\":1,\"val\":5406},{\"id\":3,\"val\":1500},{\"id\":4,\"val\":6},{\"id\":5,\"val\":5132}],\"inputs\":2,\"outputs\":0,\"status\":258}",
+        "payloadType": "json",
+        "x": 150,
+        "y": 200,
+        "wires": [
+            [
+                "17f0c6173854500b",
+                "c1fab6b39d8d9f73"
+            ]
+        ]
+    },
+    {
+        "id": "9c3da7717616b346",
+        "type": "debug",
+        "z": "b3adf53222b0de7f",
+        "name": "debug 95",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "17f0c6173854500b",
+        "type": "function",
+        "z": "b3adf53222b0de7f",
+        "name": "Process",
+        "func": "var inputArray = msg.payload;\nvar latt = flow.get(\"lat\");\nvar lngg = flow.get(\"lng\");\nvar variableToAddLatt = latt;\nvar variableToAddLngg = lngg;\n\nif (msg.payload.fields.taglist.tags[0].tt < 1000) {\n\n    inputArray.analogues.push({\"lat\":variableToAddLatt});\n    inputArray.analogues.push({ \"lng\": variableToAddLngg });\n\nmsg.payload = inputArray;\n\nreturn msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 200,
+        "wires": [
+            [
+                "9c3da7717616b346"
+            ]
+        ]
+    },
+    {
+        "id": "c1fab6b39d8d9f73",
+        "type": "function",
+        "z": "b3adf53222b0de7f",
+        "name": "Store ",
+        "func": "var lat = msg.payload.lat;\nvar lng = msg.payload.lng;\nflow.set(\"lat\", lat);\nflow.set(\"lng\", lng);",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 160,
+        "wires": [
+            [
+                "9c3da7717616b346"
+            ]
+        ]
+    }
+]

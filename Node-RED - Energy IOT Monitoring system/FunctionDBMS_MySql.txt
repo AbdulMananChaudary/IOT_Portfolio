@@ -1,0 +1,3 @@
+msg.payload = [msg.payload.e1, msg.payload.e2, msg.payload.e3, msg.payload.e4, msg.payload.e5, msg.payload.e6, msg.payload.e7, msg.payload.e8, msg.payload.e9, msg.payload.e10, msg.payload.e11, msg.payload.e12] 
+msg.topic = 'INSERT INTO SIDEBAR(Seawater_Pressure, Engine_Pressure, Diesel_Pressure, Rail_Pressure, Turbo_Pressure, Seawater_Temperature, Sterndrive_Temperature, AIr_Inlet, Watertank_Level, Dieseltank_Level, Volt_Meter, Amp_Meter ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?);'
+return msg;

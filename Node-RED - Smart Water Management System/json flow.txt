@@ -1,0 +1,61 @@
+[
+    {
+        "id": "92277e0fe2cd18b1",
+        "type": "inject",
+        "z": "22da3ebd1791843f",
+        "name": "Input Trigger",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "x": 290,
+        "y": 140,
+        "wires": [
+            [
+                "ce9e0209af9fa00b"
+            ]
+        ]
+    },
+    {
+        "id": "ce9e0209af9fa00b",
+        "type": "http request",
+        "z": "22da3ebd1791843f",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "body",
+        "url": "http://127.0.0.1:5000",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 490,
+        "y": 140,
+        "wires": [
+            [
+                "14d8c4c76661e882"
+            ]
+        ]
+    },
+    {
+        "id": "14d8c4c76661e882",
+        "type": "debug",
+        "z": "22da3ebd1791843f",
+        "name": "debug 101",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 140,
+        "wires": []
+    }
+]

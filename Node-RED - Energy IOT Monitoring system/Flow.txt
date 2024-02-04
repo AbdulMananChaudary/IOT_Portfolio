@@ -1,0 +1,1487 @@
+[
+    {
+        "id": "5fb4d89ecb087097",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "SP",
+        "props": [
+            {
+                "p": "payload.e1",
+                "v": "1000",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 40,
+        "wires": [
+            [
+                "036190df2fa6939f",
+                "81292062df85e92d"
+            ]
+        ]
+    },
+    {
+        "id": "4a4e6869d7954fa3",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "EP",
+        "props": [
+            {
+                "p": "payload.e2",
+                "v": "1000",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 80,
+        "wires": [
+            [
+                "4b9273c74d4576bc",
+                "81292062df85e92d"
+            ]
+        ]
+    },
+    {
+        "id": "649d110814fdb3ea",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "DP",
+        "props": [
+            {
+                "p": "payload.e3",
+                "v": "1000",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 120,
+        "wires": [
+            [
+                "0749fd1fa751b42f",
+                "81292062df85e92d"
+            ]
+        ]
+    },
+    {
+        "id": "28b28cba4218e335",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "RP",
+        "props": [
+            {
+                "p": "payload.e4",
+                "v": "1000",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 160,
+        "wires": [
+            [
+                "9ecd9a6e61fc28af",
+                "81292062df85e92d"
+            ]
+        ]
+    },
+    {
+        "id": "2ebfb0e568503be3",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "TP",
+        "props": [
+            {
+                "p": "payload.e5",
+                "v": "1000",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 200,
+        "wires": [
+            [
+                "07761676e5dd0d2b",
+                "81292062df85e92d"
+            ]
+        ]
+    },
+    {
+        "id": "109081cfa13498f6",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "ST",
+        "props": [
+            {
+                "p": "payload.e6",
+                "v": "1000",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 240,
+        "wires": [
+            [
+                "ca45614015d0adc3",
+                "81292062df85e92d"
+            ]
+        ]
+    },
+    {
+        "id": "e3bf762fb7b5ebbe",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "SDT",
+        "props": [
+            {
+                "p": "payload.e7",
+                "v": "1000",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 280,
+        "wires": [
+            [
+                "02a3805fc875d755",
+                "81292062df85e92d"
+            ]
+        ]
+    },
+    {
+        "id": "f6074dd7c65203c2",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "AT",
+        "props": [
+            {
+                "p": "payload.e8",
+                "v": "1000",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 320,
+        "wires": [
+            [
+                "b8095f113a6a2d73",
+                "81292062df85e92d"
+            ]
+        ]
+    },
+    {
+        "id": "0214c53b767904a1",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "DL",
+        "props": [
+            {
+                "p": "payload.e10",
+                "v": "80",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 400,
+        "wires": [
+            [
+                "2c32b211068c055f",
+                "81292062df85e92d"
+            ]
+        ]
+    },
+    {
+        "id": "2f61ed3bbc5ce022",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "VM",
+        "props": [
+            {
+                "p": "payload.e11",
+                "v": "5",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 440,
+        "wires": [
+            [
+                "d2ec3cbce02ad461",
+                "81292062df85e92d"
+            ]
+        ]
+    },
+    {
+        "id": "7b562dd1aae77cf7",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "AM",
+        "props": [
+            {
+                "p": "payload.e12",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 480,
+        "wires": [
+            [
+                "671eab5e06c77904",
+                "81292062df85e92d"
+            ]
+        ]
+    },
+    {
+        "id": "b9323d59cd109d23",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "WL",
+        "props": [
+            {
+                "p": "payload.e9",
+                "v": "60",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 360,
+        "wires": [
+            [
+                "40d6d46e3c951c9c",
+                "81292062df85e92d"
+            ]
+        ]
+    },
+    {
+        "id": "036190df2fa6939f",
+        "type": "ui_text",
+        "z": "426398a38864de60",
+        "group": "5e4f8c5e2b1390c2",
+        "order": 1,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Seawater Pressure",
+        "format": "{{msg.payload.e1 + \" bar\"}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 510,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "4b9273c74d4576bc",
+        "type": "ui_text",
+        "z": "426398a38864de60",
+        "group": "5e4f8c5e2b1390c2",
+        "order": 2,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Engine Pressure",
+        "format": "{{msg.payload.e2 + \" bar\"}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 510,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "0749fd1fa751b42f",
+        "type": "ui_text",
+        "z": "426398a38864de60",
+        "group": "5e4f8c5e2b1390c2",
+        "order": 3,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Diesel Pressure",
+        "format": "{{msg.payload.e3 + \" bar\"}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 500,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "9ecd9a6e61fc28af",
+        "type": "ui_text",
+        "z": "426398a38864de60",
+        "group": "5e4f8c5e2b1390c2",
+        "order": 5,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Rail Pressure",
+        "format": "{{msg.payload.e4 + \" bar\"}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 500,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "07761676e5dd0d2b",
+        "type": "ui_text",
+        "z": "426398a38864de60",
+        "group": "5e4f8c5e2b1390c2",
+        "order": 4,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Turbo Pressure",
+        "format": "{{msg.payload.e5 + \" bar\"}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 497,
+        "y": 201,
+        "wires": []
+    },
+    {
+        "id": "ca45614015d0adc3",
+        "type": "ui_text",
+        "z": "426398a38864de60",
+        "group": "5e4f8c5e2b1390c2",
+        "order": 6,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "SeaWater Temperature",
+        "format": "{{msg.payload.e6 + \" °C\"}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 530,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "02a3805fc875d755",
+        "type": "ui_text",
+        "z": "426398a38864de60",
+        "group": "5e4f8c5e2b1390c2",
+        "order": 7,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Sterndrive Temperature",
+        "format": "{{msg.payload.e7 + \" °C\"}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 530,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "b8095f113a6a2d73",
+        "type": "ui_text",
+        "z": "426398a38864de60",
+        "group": "5e4f8c5e2b1390c2",
+        "order": 8,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Air Inlet Temperature",
+        "format": "{{msg.payload.e8 + \" °C\"}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 520,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "40d6d46e3c951c9c",
+        "type": "ui_text",
+        "z": "426398a38864de60",
+        "group": "5e4f8c5e2b1390c2",
+        "order": 9,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Watertank level",
+        "format": "{{msg.payload.e9 + \" %\"}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 500,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "2c32b211068c055f",
+        "type": "ui_text",
+        "z": "426398a38864de60",
+        "group": "5e4f8c5e2b1390c2",
+        "order": 10,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Diesel Tank Level",
+        "format": "{{msg.payload.e10 + \" %\"}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 510,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "d2ec3cbce02ad461",
+        "type": "ui_text",
+        "z": "426398a38864de60",
+        "group": "5e4f8c5e2b1390c2",
+        "order": 11,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Voltmeter",
+        "format": "{{msg.payload.e11 + \" V\"}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 480,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "671eab5e06c77904",
+        "type": "ui_text",
+        "z": "426398a38864de60",
+        "group": "5e4f8c5e2b1390c2",
+        "order": 12,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Amp meter",
+        "format": "{{msg.payload.e12 + \" A\"}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 470,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "4215ebf34914a2c9",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "RPM",
+        "props": [
+            {
+                "p": "payload.rpm",
+                "v": "20",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 730,
+        "y": 60,
+        "wires": [
+            [
+                "232482f864332527",
+                "998d5d355476f8ca"
+            ]
+        ]
+    },
+    {
+        "id": "dee1163c10d89c04",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "OP",
+        "props": [
+            {
+                "p": "payload.op",
+                "v": "20",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 730,
+        "y": 100,
+        "wires": [
+            [
+                "981eb0f06567dd0a",
+                "998d5d355476f8ca"
+            ]
+        ]
+    },
+    {
+        "id": "395e56f32cc296a6",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "OT",
+        "props": [
+            {
+                "p": "payload.ot",
+                "v": "20",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 730,
+        "y": 140,
+        "wires": [
+            [
+                "910afcccc9b1dd1e",
+                "998d5d355476f8ca"
+            ]
+        ]
+    },
+    {
+        "id": "b61feb8d034083e2",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "CT",
+        "props": [
+            {
+                "p": "payload.cooling",
+                "v": "20",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 730,
+        "y": 180,
+        "wires": [
+            [
+                "7a743819abca1ba0",
+                "998d5d355476f8ca"
+            ]
+        ]
+    },
+    {
+        "id": "232482f864332527",
+        "type": "ui_gauge",
+        "z": "426398a38864de60",
+        "name": "",
+        "group": "cb0c6fe556bde14f",
+        "order": 1,
+        "width": 4,
+        "height": 4,
+        "gtype": "gage",
+        "title": "RPM",
+        "label": "RPM",
+        "format": "{{msg.payload.rpm}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 950,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "981eb0f06567dd0a",
+        "type": "ui_gauge",
+        "z": "426398a38864de60",
+        "name": "",
+        "group": "cb0c6fe556bde14f",
+        "order": 2,
+        "width": 4,
+        "height": 4,
+        "gtype": "gage",
+        "title": "Oil Press",
+        "label": "PSI",
+        "format": "{{msg.payload.op}}",
+        "min": 0,
+        "max": "30",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 960,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "910afcccc9b1dd1e",
+        "type": "ui_gauge",
+        "z": "426398a38864de60",
+        "name": "",
+        "group": "cb0c6fe556bde14f",
+        "order": 3,
+        "width": 4,
+        "height": 4,
+        "gtype": "gage",
+        "title": "Oil Temp",
+        "label": "*Hg",
+        "format": "{{msg.payload.ot}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 960,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "7a743819abca1ba0",
+        "type": "ui_gauge",
+        "z": "426398a38864de60",
+        "name": "",
+        "group": "cb0c6fe556bde14f",
+        "order": 4,
+        "width": 4,
+        "height": 4,
+        "gtype": "gage",
+        "title": "Cooling",
+        "label": "*F",
+        "format": "{{msg.payload.cooling}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 960,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "06a48288a1c39476",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "EDG Sensor 1",
+        "props": [
+            {
+                "p": "payload.sensor1",
+                "v": "50",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "Sensor 1",
+        "x": 880,
+        "y": 260,
+        "wires": [
+            [
+                "62521d4be02c803e",
+                "8d0202a2da1020ef"
+            ]
+        ]
+    },
+    {
+        "id": "523b75beaaa6327d",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "EDG Sensor 2",
+        "props": [
+            {
+                "p": "payload.sensor2",
+                "v": "10",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "Sensor 2",
+        "x": 880,
+        "y": 300,
+        "wires": [
+            [
+                "62521d4be02c803e",
+                "2b525853ee7a4007"
+            ]
+        ]
+    },
+    {
+        "id": "336643d89d059c02",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "EDG Sensor 3",
+        "props": [
+            {
+                "p": "payload.sensor3",
+                "v": "70",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "Sensor 3",
+        "x": 880,
+        "y": 340,
+        "wires": [
+            [
+                "62521d4be02c803e",
+                "5de25de32d44582c"
+            ]
+        ]
+    },
+    {
+        "id": "5957038598ff2bcb",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "EDG Sensor 4",
+        "props": [
+            {
+                "p": "payload.sensor4",
+                "v": "90",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "Sensor 4",
+        "x": 880,
+        "y": 380,
+        "wires": [
+            [
+                "62521d4be02c803e",
+                "378f5e4c65457f25"
+            ]
+        ]
+    },
+    {
+        "id": "1f8e042cf4725dab",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "EDG Sensor 5",
+        "props": [
+            {
+                "p": "payload.sensor5",
+                "v": "40",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "Sensor 5",
+        "x": 880,
+        "y": 420,
+        "wires": [
+            [
+                "62521d4be02c803e",
+                "7b7f505e87114dc0"
+            ]
+        ]
+    },
+    {
+        "id": "91cdc3f3aac4def1",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "EDG Sensor 6",
+        "props": [
+            {
+                "p": "payload.sensor6",
+                "v": "50",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "Sensor 6",
+        "x": 880,
+        "y": 460,
+        "wires": [
+            [
+                "62521d4be02c803e",
+                "4472646349b7e5cc"
+            ]
+        ]
+    },
+    {
+        "id": "ef4ba33ee0da64f9",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "EDG Sensor 7",
+        "props": [
+            {
+                "p": "payload.sensor7",
+                "v": "50",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "Sensor 7",
+        "x": 880,
+        "y": 500,
+        "wires": [
+            [
+                "62521d4be02c803e",
+                "1c6d603024837945"
+            ]
+        ]
+    },
+    {
+        "id": "8e4a3927b6ce07fd",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "EDG Sensor 8",
+        "props": [
+            {
+                "p": "payload.sensor8",
+                "v": "50",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "Sensor 8",
+        "x": 880,
+        "y": 540,
+        "wires": [
+            [
+                "62521d4be02c803e",
+                "5fe5ebe132cacb60"
+            ]
+        ]
+    },
+    {
+        "id": "5cce34219a5481d7",
+        "type": "mysql",
+        "z": "426398a38864de60",
+        "mydb": "f835f977e9d39f36",
+        "name": "",
+        "x": 1310,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8c3efe685a8b08c0",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "Inject it only once to create GAUGES database before loading data",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "CREATE TABLE Gauges(   p_Id int NOT NULL AUTO_INCREMENT PRIMARY KEY,   Atime TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, RPM_Tachometer   int  DEFAULT NULL, Oil_Pressure int  DEFAULT NULL,   Oil_Temperature int  DEFAULT NULL,   Cooling_Water int  DEFAULT NULL);",
+        "payload": "",
+        "payloadType": "date",
+        "x": 920,
+        "y": 20,
+        "wires": [
+            [
+                "5cce34219a5481d7"
+            ]
+        ]
+    },
+    {
+        "id": "998d5d355476f8ca",
+        "type": "function",
+        "z": "426398a38864de60",
+        "name": "function 48",
+        "func": "msg.payload = [msg.payload.rpm, msg.payload.op, msg.payload.ot, msg.payload.cooling] \nmsg.topic = 'INSERT INTO gauges(RPM_Tachometer, Oil_Pressure, Oil_Temperature, Cooling_Water) VALUES(?,?,?,?);'\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1130,
+        "y": 100,
+        "wires": [
+            [
+                "5cce34219a5481d7"
+            ]
+        ]
+    },
+    {
+        "id": "66a721367f0fc35b",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "Inject it only once to create EGT_SENSORS database before loading data",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "CREATE TABLE EGT_Sensors(   p_Id int NOT NULL AUTO_INCREMENT PRIMARY KEY,   Atime TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, Sensor1  int  DEFAULT NULL, Sensor2 int  DEFAULT NULL, Sensor3 int  DEFAULT NULL, Sensor4 int  DEFAULT NULL, Sensor5  int  DEFAULT NULL, Sensor6 int  DEFAULT NULL, Sensor7 int  DEFAULT NULL, Sensor8 int  DEFAULT NULL);",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1060,
+        "y": 220,
+        "wires": [
+            [
+                "4c258dbff5869b60"
+            ]
+        ]
+    },
+    {
+        "id": "62521d4be02c803e",
+        "type": "function",
+        "z": "426398a38864de60",
+        "name": "function 49",
+        "func": "msg.payload = [msg.payload.sensor1, msg.payload.sensor2, msg.payload.sensor3, msg.payload.sensor4, msg.payload.sensor5, msg.payload.sensor6, msg.payload.sensor7, msg.payload.sensor8] \nmsg.topic = 'INSERT INTO EGT_Sensors(Sensor1, Sensor2, Sensor3, Sensor4, Sensor5, Sensor6, Sensor7, Sensor8) VALUES(?,?,?,?,?,?,?,?);'\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1230,
+        "y": 380,
+        "wires": [
+            [
+                "4c258dbff5869b60"
+            ]
+        ]
+    },
+    {
+        "id": "4c258dbff5869b60",
+        "type": "mysql",
+        "z": "426398a38864de60",
+        "mydb": "f835f977e9d39f36",
+        "name": "",
+        "x": 1410,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "68e130b715a820c5",
+        "type": "inject",
+        "z": "426398a38864de60",
+        "name": "Inject it only once to create SIDEBAR database before loading data",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "CREATE TABLE SIDEBAR( p_Id int NOT NULL AUTO_INCREMENT PRIMARY KEY,   Atime TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, Seawater_Pressure int  DEFAULT NULL, Engine_Pressure int  DEFAULT NULL, Diesel_Pressure int  DEFAULT NULL, Rail_Pressure int  DEFAULT NULL, Turbo_Pressure int  DEFAULT NULL, Seawater_Temperature int  DEFAULT NULL, Sterndrive_Temperature int  DEFAULT NULL, Air_Inlet int  DEFAULT NULL, Watertank_Level int  DEFAULT NULL, Dieseltank_Level int  DEFAULT NULL, Volt_Meter int  DEFAULT NULL, Amp_Meter int  DEFAULT NULL);",
+        "payload": "",
+        "payloadType": "date",
+        "x": 360,
+        "y": 580,
+        "wires": [
+            [
+                "d146bc3b6945231d"
+            ]
+        ]
+    },
+    {
+        "id": "81292062df85e92d",
+        "type": "function",
+        "z": "426398a38864de60",
+        "name": "function 50",
+        "func": "msg.payload = [msg.payload.e1, msg.payload.e2, msg.payload.e3, msg.payload.e4, msg.payload.e5, msg.payload.e6, msg.payload.e7, msg.payload.e8, msg.payload.e9, msg.payload.e10, msg.payload.e11, msg.payload.e12] \nmsg.topic = 'INSERT INTO SIDEBAR(Seawater_Pressure, Engine_Pressure, Diesel_Pressure, Rail_Pressure, Turbo_Pressure, Seawater_Temperature, Sterndrive_Temperature, AIr_Inlet, Watertank_Level, Dieseltank_Level, Volt_Meter, Amp_Meter ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?);'\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 540,
+        "wires": [
+            [
+                "d146bc3b6945231d"
+            ]
+        ]
+    },
+    {
+        "id": "d146bc3b6945231d",
+        "type": "mysql",
+        "z": "426398a38864de60",
+        "mydb": "f835f977e9d39f36",
+        "name": "",
+        "x": 710,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2db9d7e6c0149ef8",
+        "type": "ui_chart",
+        "z": "426398a38864de60",
+        "name": "",
+        "group": "e9869c3249f7f20c",
+        "order": 2,
+        "width": 8,
+        "height": 8,
+        "label": "Temperatures EGT(°F)",
+        "chartType": "bar",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "EGT",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1400,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8d0202a2da1020ef",
+        "type": "function",
+        "z": "426398a38864de60",
+        "name": "function 51",
+        "func": "msg.payload = msg.payload.sensor1;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1110,
+        "y": 500,
+        "wires": [
+            [
+                "2db9d7e6c0149ef8"
+            ]
+        ]
+    },
+    {
+        "id": "2b525853ee7a4007",
+        "type": "function",
+        "z": "426398a38864de60",
+        "name": "function 52",
+        "func": "msg.payload = msg.payload.sensor2;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1110,
+        "y": 540,
+        "wires": [
+            [
+                "2db9d7e6c0149ef8"
+            ]
+        ]
+    },
+    {
+        "id": "5de25de32d44582c",
+        "type": "function",
+        "z": "426398a38864de60",
+        "name": "function 53",
+        "func": "msg.payload = msg.payload.sensor3;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1110,
+        "y": 580,
+        "wires": [
+            [
+                "2db9d7e6c0149ef8"
+            ]
+        ]
+    },
+    {
+        "id": "378f5e4c65457f25",
+        "type": "function",
+        "z": "426398a38864de60",
+        "name": "function 54",
+        "func": "msg.payload = msg.payload.sensor4;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1110,
+        "y": 620,
+        "wires": [
+            [
+                "2db9d7e6c0149ef8"
+            ]
+        ]
+    },
+    {
+        "id": "7b7f505e87114dc0",
+        "type": "function",
+        "z": "426398a38864de60",
+        "name": "function 55",
+        "func": "msg.payload = msg.payload.sensor5;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1110,
+        "y": 660,
+        "wires": [
+            [
+                "2db9d7e6c0149ef8"
+            ]
+        ]
+    },
+    {
+        "id": "4472646349b7e5cc",
+        "type": "function",
+        "z": "426398a38864de60",
+        "name": "function 56",
+        "func": "msg.payload = msg.payload.sensor6;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1110,
+        "y": 700,
+        "wires": [
+            [
+                "2db9d7e6c0149ef8"
+            ]
+        ]
+    },
+    {
+        "id": "1c6d603024837945",
+        "type": "function",
+        "z": "426398a38864de60",
+        "name": "function 57",
+        "func": "msg.payload = msg.payload.sensor7;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1110,
+        "y": 740,
+        "wires": [
+            [
+                "2db9d7e6c0149ef8"
+            ]
+        ]
+    },
+    {
+        "id": "5fe5ebe132cacb60",
+        "type": "function",
+        "z": "426398a38864de60",
+        "name": "function 58",
+        "func": "msg.payload = msg.payload.sensor8;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1110,
+        "y": 780,
+        "wires": [
+            [
+                "2db9d7e6c0149ef8"
+            ]
+        ]
+    },
+    {
+        "id": "37a96840a9fcc1e2",
+        "type": "ui_webcam",
+        "z": "426398a38864de60",
+        "name": "",
+        "group": "e9869c3249f7f20c",
+        "order": 1,
+        "width": 8,
+        "height": 8,
+        "countdown": false,
+        "autoStart": false,
+        "hideCaptureButton": false,
+        "showImage": "2",
+        "mirror": true,
+        "format": "png",
+        "x": 1320,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5e4f8c5e2b1390c2",
+        "type": "ui_group",
+        "name": "Group 1",
+        "tab": "3d29339e46ccd6b9",
+        "order": 2,
+        "disp": false,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "cb0c6fe556bde14f",
+        "type": "ui_group",
+        "name": "Group 2",
+        "tab": "3d29339e46ccd6b9",
+        "order": 1,
+        "disp": false,
+        "width": "16",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f835f977e9d39f36",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "test",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "e9869c3249f7f20c",
+        "type": "ui_group",
+        "name": "Group 3",
+        "tab": "3d29339e46ccd6b9",
+        "order": 4,
+        "disp": false,
+        "width": "16",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "3d29339e46ccd6b9",
+        "type": "ui_tab",
+        "name": "TFT Color Monitor",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    }
+]

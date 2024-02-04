@@ -1,0 +1,698 @@
+[
+    {
+        "id": "af6b8aba34053862",
+        "type": "tab",
+        "label": "Site 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e2b661fab008a347",
+        "type": "inject",
+        "z": "af6b8aba34053862",
+        "name": "Site 1",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "2",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "Site1",
+        "payload": "{\"ecuid\":\"KMA8277937\",\"ts\":\"2023-11-19 14:05:05\",\"data\":[{\"slaveid\":1,\"sensortype\":\"fuel\",\"level\":20,\"temp\":40},{\"slaveid\":2,\"sensortype\":\"fuel\",\"level\":30,\"vol\":0,\"temp\":50},{\"slaveid\":4,\"sensortype\":\"flow\",\"flow\":10,\"totalflow\":80},{\"slaveid\":5,\"sensortype\":\"flow\",\"flow\":20,\"totalflow\":40},{\"slaveid\":6,\"sensortype\":\"flow\",\"flow\":30,\"totalflow\":60},{\"slaveid\":7,\"sensortype\":\"flow\",\"flow\":40,\"totalflow\":50},{\"slaveid\":8,\"sensortype\":\"flow\",\"flow\":50,\"totalflow\":30},{\"slaveid\":9,\"sensortype\":\"flow\",\"flow\":60,\"totalflow\":20}]}",
+        "payloadType": "json",
+        "x": 180,
+        "y": 180,
+        "wires": [
+            [
+                "5df51fa408bf50b0",
+                "055b9da0dba4633c"
+            ]
+        ]
+    },
+    {
+        "id": "5df51fa408bf50b0",
+        "type": "function",
+        "z": "af6b8aba34053862",
+        "name": "Tanks 1-2",
+        "func": "var level1 = { payload: msg.payload.data[0].level}\nvar temp1 = { payload: msg.payload.data[0].temp }\nvar level2 = { payload: msg.payload.data[1].level }\nvar temp2 = { payload: msg.payload.data[1].temp }\nreturn [level1, temp1, level2, temp2];",
+        "outputs": 4,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 120,
+        "wires": [
+            [
+                "993addcb77b7ee9f"
+            ],
+            [
+                "506d4fda6e29775c"
+            ],
+            [
+                "ec98a9543bb1bac1"
+            ],
+            [
+                "cdf9eddb51968769"
+            ]
+        ]
+    },
+    {
+        "id": "993addcb77b7ee9f",
+        "type": "ui_gauge",
+        "z": "af6b8aba34053862",
+        "name": "",
+        "group": "38bfeb9195a88978",
+        "order": 3,
+        "width": 6,
+        "height": 8,
+        "gtype": "wave",
+        "title": "Tank1",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 510,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "506d4fda6e29775c",
+        "type": "ui_text",
+        "z": "af6b8aba34053862",
+        "group": "38bfeb9195a88978",
+        "order": 1,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Temperature",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 530,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "ec98a9543bb1bac1",
+        "type": "ui_gauge",
+        "z": "af6b8aba34053862",
+        "name": "",
+        "group": "38bfeb9195a88978",
+        "order": 4,
+        "width": 6,
+        "height": 8,
+        "gtype": "wave",
+        "title": "Tank2",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 510,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "cdf9eddb51968769",
+        "type": "ui_text",
+        "z": "af6b8aba34053862",
+        "group": "38bfeb9195a88978",
+        "order": 2,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "temperature",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 530,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "055b9da0dba4633c",
+        "type": "link out",
+        "z": "af6b8aba34053862",
+        "name": "link out 31",
+        "mode": "link",
+        "links": [
+            "730d55863b58d458",
+            "b6dc6a042b9ad7cf",
+            "6a7921531a5e49c7"
+        ],
+        "x": 265,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "9233954b15760bb4",
+        "type": "function",
+        "z": "af6b8aba34053862",
+        "name": "Generator 1-2-3",
+        "func": "//Generator One\nvar flow1 = { payload: msg.payload.data[2].flow}\nvar totalflow1 = { payload: msg.payload.data[2].totalflow }\nvar flow2 = { payload: msg.payload.data[3].flow }\nvar totalflow2 = { payload: msg.payload.data[3].totalflow }\n//Generator Two\nvar flow3 = { payload: msg.payload.data[4].flow }\nvar totalflow3 = { payload: msg.payload.data[4].totalflow }\nvar flow4 = { payload: msg.payload.data[5].flow }\nvar totalflow4 = { payload: msg.payload.data[5].totalflow }\n//Generator Three\nvar flow5 = { payload: msg.payload.data[6].flow }\nvar totalflow5 = { payload: msg.payload.data[6].totalflow }\nvar flow6 = { payload: msg.payload.data[7].flow }\nvar totalflow6 = { payload: msg.payload.data[7].totalflow }\n\nreturn [flow1, totalflow1, flow2, totalflow2, flow3, totalflow3, flow4, totalflow4, flow5, totalflow5, flow6, totalflow6];",
+        "outputs": 12,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 340,
+        "wires": [
+            [
+                "b5d32fc0a376aaa2"
+            ],
+            [
+                "0fc91e9015313e1c"
+            ],
+            [
+                "19176a0868fcd705"
+            ],
+            [
+                "e345203d6adb1817"
+            ],
+            [
+                "53bf8ba5e8a64fbb"
+            ],
+            [
+                "d275160e545cfd90"
+            ],
+            [
+                "2f460f1b9f41cf50"
+            ],
+            [
+                "0c1e3ad6284e97dc"
+            ],
+            [
+                "ec1d6d0cd656c1fb"
+            ],
+            [
+                "a8f8d1c2ded0a0b8"
+            ],
+            [
+                "8c15b2e94a306cbc"
+            ],
+            [
+                "c467eee51a142adc"
+            ]
+        ]
+    },
+    {
+        "id": "b5d32fc0a376aaa2",
+        "type": "ui_gauge",
+        "z": "af6b8aba34053862",
+        "name": "",
+        "group": "b37fa783ba93e489",
+        "order": 3,
+        "width": 6,
+        "height": 5,
+        "gtype": "compass",
+        "title": "G_Sensor1",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 810,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "0fc91e9015313e1c",
+        "type": "ui_text",
+        "z": "af6b8aba34053862",
+        "group": "b37fa783ba93e489",
+        "order": 1,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Total Flow",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 800,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "19176a0868fcd705",
+        "type": "ui_gauge",
+        "z": "af6b8aba34053862",
+        "name": "",
+        "group": "b37fa783ba93e489",
+        "order": 4,
+        "width": 6,
+        "height": 5,
+        "gtype": "compass",
+        "title": "G_Sensor2",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 810,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "e345203d6adb1817",
+        "type": "ui_text",
+        "z": "af6b8aba34053862",
+        "group": "b37fa783ba93e489",
+        "order": 2,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Total Flow",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 800,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "730d55863b58d458",
+        "type": "link in",
+        "z": "af6b8aba34053862",
+        "name": "link in 19",
+        "links": [
+            "055b9da0dba4633c"
+        ],
+        "x": 315,
+        "y": 380,
+        "wires": [
+            [
+                "9233954b15760bb4",
+                "81c30e68f9f8f0e0"
+            ]
+        ]
+    },
+    {
+        "id": "53bf8ba5e8a64fbb",
+        "type": "ui_gauge",
+        "z": "af6b8aba34053862",
+        "name": "",
+        "group": "8cb6a2da8bb920b0",
+        "order": 3,
+        "width": 6,
+        "height": 5,
+        "gtype": "compass",
+        "title": "G_Sensor3",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 870,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "d275160e545cfd90",
+        "type": "ui_text",
+        "z": "af6b8aba34053862",
+        "group": "8cb6a2da8bb920b0",
+        "order": 1,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Total Flow",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 860,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "2f460f1b9f41cf50",
+        "type": "ui_gauge",
+        "z": "af6b8aba34053862",
+        "name": "",
+        "group": "8cb6a2da8bb920b0",
+        "order": 4,
+        "width": 6,
+        "height": 5,
+        "gtype": "compass",
+        "title": "G_Sensor4",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 870,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "0c1e3ad6284e97dc",
+        "type": "ui_text",
+        "z": "af6b8aba34053862",
+        "group": "8cb6a2da8bb920b0",
+        "order": 2,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Total Flow",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 860,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "ec1d6d0cd656c1fb",
+        "type": "ui_gauge",
+        "z": "af6b8aba34053862",
+        "name": "",
+        "group": "b24e68b1cd115c39",
+        "order": 3,
+        "width": 6,
+        "height": 5,
+        "gtype": "compass",
+        "title": "G_Sensor5",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 810,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "a8f8d1c2ded0a0b8",
+        "type": "ui_text",
+        "z": "af6b8aba34053862",
+        "group": "b24e68b1cd115c39",
+        "order": 1,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Total Flow",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 800,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "8c15b2e94a306cbc",
+        "type": "ui_gauge",
+        "z": "af6b8aba34053862",
+        "name": "",
+        "group": "b24e68b1cd115c39",
+        "order": 4,
+        "width": 6,
+        "height": 5,
+        "gtype": "compass",
+        "title": "G_Sensor6",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 810,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "c467eee51a142adc",
+        "type": "ui_text",
+        "z": "af6b8aba34053862",
+        "group": "b24e68b1cd115c39",
+        "order": 2,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Total Flow",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 800,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "89bdccfb3f61c231",
+        "type": "ui_template",
+        "z": "af6b8aba34053862",
+        "group": "b37fa783ba93e489",
+        "name": "Generator 1",
+        "order": 5,
+        "width": 12,
+        "height": 3,
+        "format": "<img src=\"https://www.shutterstock.com/shutterstock/videos/1100505363/thumb/12.jpg?ip=x480\" alt=\"Image Alt Text\" style=\"width:100%; height:100%;\">",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 170,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "79f12c58f887e5a2",
+        "type": "ui_template",
+        "z": "af6b8aba34053862",
+        "group": "8cb6a2da8bb920b0",
+        "name": "Generator 2",
+        "order": 5,
+        "width": 12,
+        "height": 3,
+        "format": "<img src=\"https://www.shutterstock.com/shutterstock/videos/1100505363/thumb/12.jpg?ip=x480\" alt=\"Image Alt Text\" style=\"width:100%; height:100%;\">",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 190,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c31712a3e39e2158",
+        "type": "ui_template",
+        "z": "af6b8aba34053862",
+        "group": "b24e68b1cd115c39",
+        "name": "Generator 3",
+        "order": 5,
+        "width": 12,
+        "height": 3,
+        "format": "<img src=\"https://www.shutterstock.com/shutterstock/videos/1100505363/thumb/12.jpg?ip=x480\" alt=\"Image Alt Text\" style=\"width:100%; height:100%;\">",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 210,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c5add40bd741d63e",
+        "type": "inject",
+        "z": "af6b8aba34053862",
+        "name": "Inject it only once to create Site1 database before loading data",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "CREATE TABLE Site1( p_Id int NOT NULL AUTO_INCREMENT PRIMARY KEY,   Atime TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, Tank1 int  DEFAULT NULL, Tank2 int  DEFAULT NULL,Generator1_Sensor1 int  DEFAULT NULL, Generator1_Sensor2 int  DEFAULT NULL, Generator2_Sensor3 int  DEFAULT NULL, Generator2_Sensor4 int  DEFAULT NULL, Generator3_Sensor5 int  DEFAULT NULL, Generator3_Sensor6 int  DEFAULT NULL);",
+        "payload": "",
+        "payloadType": "date",
+        "x": 480,
+        "y": 720,
+        "wires": [
+            [
+                "91831c2fe74ff1c2"
+            ]
+        ]
+    },
+    {
+        "id": "81c30e68f9f8f0e0",
+        "type": "function",
+        "z": "af6b8aba34053862",
+        "name": "function 73",
+        "func": "msg.payload = [msg.payload.data[0].level, msg.payload.data[1].level, msg.payload.data[2].flow, msg.payload.data[3].flow, msg.payload.data[4].flow, msg.payload.data[5].flow, msg.payload.data[6].flow, msg.payload.data[7].flow];\nmsg.topic = 'INSERT INTO Site1(Tank1, Tank2, Generator1_Sensor1, Generator1_Sensor2, Generator2_Sensor3, Generator2_Sensor4,Generator3_Sensor5,Generator3_Sensor6 ) VALUES(?,?,?,?,?,?,?,?);'\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 660,
+        "wires": [
+            [
+                "91831c2fe74ff1c2"
+            ]
+        ]
+    },
+    {
+        "id": "91831c2fe74ff1c2",
+        "type": "mysql",
+        "z": "af6b8aba34053862",
+        "mydb": "f835f977e9d39f36",
+        "name": "",
+        "x": 890,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "38bfeb9195a88978",
+        "type": "ui_group",
+        "name": "Site1Tank",
+        "tab": "38e4617b619be0cf",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b37fa783ba93e489",
+        "type": "ui_group",
+        "name": "Generator1",
+        "tab": "38e4617b619be0cf",
+        "order": 3,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "8cb6a2da8bb920b0",
+        "type": "ui_group",
+        "name": "Generator2",
+        "tab": "38e4617b619be0cf",
+        "order": 4,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b24e68b1cd115c39",
+        "type": "ui_group",
+        "name": "Generator3",
+        "tab": "38e4617b619be0cf",
+        "order": 5,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f835f977e9d39f36",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "test",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "38e4617b619be0cf",
+        "type": "ui_tab",
+        "name": "Site1",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    }
+]

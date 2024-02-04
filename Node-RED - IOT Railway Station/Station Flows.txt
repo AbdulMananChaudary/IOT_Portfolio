@@ -1,0 +1,509 @@
+[
+    {
+        "id": "37eceb43a89436a3",
+        "type": "inject",
+        "z": "5e4cdae0c52a5236",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "3",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 740,
+        "wires": [
+            [
+                "6a4d59e298aab26a"
+            ]
+        ]
+    },
+    {
+        "id": "6a4d59e298aab26a",
+        "type": "function",
+        "z": "5e4cdae0c52a5236",
+        "name": "Random ",
+        "func": "var randomNumber = Math.floor(Math.random() * 56) - 20;\nvar msg = { payload: { temperature: randomNumber } };\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 740,
+        "wires": [
+            [
+                "e0381584f305c120",
+                "213440c7ae160f79",
+                "78dea29ecc0b6894"
+            ]
+        ]
+    },
+    {
+        "id": "0ef0e55523f9921e",
+        "type": "mqtt out",
+        "z": "5e4cdae0c52a5236",
+        "name": "",
+        "topic": "MQTT01",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "621a445fccca02f8",
+        "x": 700,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "e0381584f305c120",
+        "type": "function",
+        "z": "5e4cdae0c52a5236",
+        "name": "String",
+        "func": "var temperature = msg.payload.temperature; // Assumes the input message has a \"temperature\" property that contains a numerical value\nvar threshold = 2; // Set the temperature threshold value here\nvar message;\n\nif (temperature > threshold) {\n    message = \"Normal\";\n} else {\n    message = \"Low Temperature - possible ice hazard\";\n}\n\nmsg.payload = message;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 740,
+        "wires": [
+            [
+                "0ef0e55523f9921e",
+                "bed18442fb45ebb6"
+            ]
+        ]
+    },
+    {
+        "id": "213440c7ae160f79",
+        "type": "function",
+        "z": "5e4cdae0c52a5236",
+        "name": "Numeric",
+        "func": "var valueString = msg.payload.temperature; // Assumes the input object has a \"value\" property that contains a numerical value as a string\nvar valueNumber = parseInt(valueString);\nmsg.payload = valueNumber;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 800,
+        "wires": [
+            [
+                "0ef0e55523f9921e",
+                "c98546e1e472a58a"
+            ]
+        ]
+    },
+    {
+        "id": "5af88c2b1091d81f",
+        "type": "mqtt in",
+        "z": "5e4cdae0c52a5236",
+        "name": "",
+        "topic": "MQTT02",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "621a445fccca02f8",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 100,
+        "y": 480,
+        "wires": [
+            [
+                "1e6a1722.f2f725",
+                "59a017b8d3877328",
+                "9d45b47faa7bdb75",
+                "18fd615c4393fbde",
+                "d4dc4e0017942723",
+                "fdc51c0f8ef4b4b5",
+                "9962d0b4e3103890"
+            ]
+        ]
+    },
+    {
+        "id": "5e501cde1a8b1865",
+        "type": "ui_switch",
+        "z": "5e4cdae0c52a5236",
+        "name": "",
+        "label": "Indicator",
+        "tooltip": "",
+        "group": "c2566a98d393828a",
+        "order": 5,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 620,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1e6a1722.f2f725",
+        "type": "function",
+        "z": "5e4cdae0c52a5236",
+        "name": "",
+        "func": "if (msg.payload <2) {\n    msg.payload = true;\n} else {\n    msg.payload = false;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 620,
+        "wires": [
+            [
+                "a8f9fe06.6a11b8"
+            ]
+        ]
+    },
+    {
+        "id": "c5be5b5a.8e70b",
+        "type": "debug",
+        "z": "5e4cdae0c52a5236",
+        "name": "Switch ON",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 630,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "a8f9fe06.6a11b8",
+        "type": "switch",
+        "z": "5e4cdae0c52a5236",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 450,
+        "y": 620,
+        "wires": [
+            [
+                "c5be5b5a.8e70b",
+                "5e501cde1a8b1865"
+            ],
+            [
+                "5e501cde1a8b1865"
+            ]
+        ]
+    },
+    {
+        "id": "59a017b8d3877328",
+        "type": "ui_chart",
+        "z": "5e4cdae0c52a5236",
+        "name": "",
+        "group": "6e9cdddd5b74e412",
+        "order": 1,
+        "width": 18,
+        "height": 8,
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "-20",
+        "ymax": "35",
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 610,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9d45b47faa7bdb75",
+        "type": "switch",
+        "z": "5e4cdae0c52a5236",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Audio Announcement",
+                "vt": "str"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 350,
+        "y": 360,
+        "wires": [
+            [
+                "1eac2d07c6701c69",
+                "9bedeef17d4b092d"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "1eac2d07c6701c69",
+        "type": "debug",
+        "z": "5e4cdae0c52a5236",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "d4dc4e0017942723",
+        "type": "ui_text",
+        "z": "5e4cdae0c52a5236",
+        "group": "c2566a98d393828a",
+        "order": 4,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Platform_Number_5",
+        "format": "{{Platform_Number_5}}",
+        "layout": "row-center",
+        "className": "",
+        "x": 660,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "18fd615c4393fbde",
+        "type": "ui_text",
+        "z": "5e4cdae0c52a5236",
+        "group": "c2566a98d393828a",
+        "order": 3,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Train_Arrived",
+        "format": "{{Train_Arrived}}",
+        "layout": "row-center",
+        "className": "",
+        "x": 640,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "fdc51c0f8ef4b4b5",
+        "type": "ui_text",
+        "z": "5e4cdae0c52a5236",
+        "group": "c2566a98d393828a",
+        "order": 1,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "CONTROL_UPDATE",
+        "format": "{{CONTROL_UPDATE}}",
+        "layout": "row-center",
+        "className": "",
+        "x": 660,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "9bedeef17d4b092d",
+        "type": "ui_audio",
+        "z": "5e4cdae0c52a5236",
+        "name": "",
+        "group": "c2566a98d393828a",
+        "voice": "Google UK English Female",
+        "always": true,
+        "x": 620,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "9962d0b4e3103890",
+        "type": "ui_text",
+        "z": "5e4cdae0c52a5236",
+        "group": "c2566a98d393828a",
+        "order": 2,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Today",
+        "format": "{{Today}}",
+        "layout": "row-center",
+        "className": "",
+        "x": 610,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "c98546e1e472a58a",
+        "type": "debug",
+        "z": "5e4cdae0c52a5236",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "bed18442fb45ebb6",
+        "type": "debug",
+        "z": "5e4cdae0c52a5236",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "78dea29ecc0b6894",
+        "type": "debug",
+        "z": "5e4cdae0c52a5236",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "621a445fccca02f8",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "c2566a98d393828a",
+        "type": "ui_group",
+        "name": "Updates",
+        "tab": "65b0ed8cda91c151",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "6e9cdddd5b74e412",
+        "type": "ui_group",
+        "name": "Station",
+        "tab": "65b0ed8cda91c151",
+        "order": 2,
+        "disp": true,
+        "width": 18,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "65b0ed8cda91c151",
+        "type": "ui_tab",
+        "name": "Station",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    }
+]

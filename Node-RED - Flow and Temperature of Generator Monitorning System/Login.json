@@ -1,0 +1,555 @@
+[
+    {
+        "id": "8fa91adf252e1247",
+        "type": "ui_form",
+        "z": "69e8e2867c581dbf",
+        "name": "Dashboard Sign-In",
+        "label": "",
+        "group": "4e6156cf5623f756",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "username",
+                "value": "username",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "password",
+                "value": "password",
+                "type": "password",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "username": "",
+            "password": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "",
+        "topicType": "str",
+        "splitLayout": false,
+        "className": "",
+        "x": 190,
+        "y": 180,
+        "wires": [
+            [
+                "292811072e61fab8",
+                "2e82cd821d1e3ad3",
+                "190842838eed15b0"
+            ]
+        ]
+    },
+    {
+        "id": "b9e0c4e0d0c8356f",
+        "type": "debug",
+        "z": "69e8e2867c581dbf",
+        "name": "Debug Account Log ",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 758.0000915527344,
+        "y": 141.00000762939453,
+        "wires": []
+    },
+    {
+        "id": "bea6106e62cf5097",
+        "type": "comment",
+        "z": "69e8e2867c581dbf",
+        "name": "Sign-In Section",
+        "info": "",
+        "x": 190.00000762939453,
+        "y": 122.99999618530273,
+        "wires": []
+    },
+    {
+        "id": "292811072e61fab8",
+        "type": "function",
+        "z": "69e8e2867c581dbf",
+        "name": "Account Log",
+        "func": "var accountlog =  flow.get(\"accountlog\") || [] ; \n\naccountlog.push({ accessAt : new Date(), username : msg.payload.username})\n\nflow.set(\"accountlog\", accountlog);\n\nmsg.payload = accountlog;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 389.00000762939453,
+        "y": 149.99999618530273,
+        "wires": [
+            [
+                "b9e0c4e0d0c8356f"
+            ]
+        ]
+    },
+    {
+        "id": "2e82cd821d1e3ad3",
+        "type": "function",
+        "z": "69e8e2867c581dbf",
+        "name": "Account Verification",
+        "func": "var accounts =  flow.get(\"accounts\") || [ { username : \"admin\", password : \"admin\"},{ username : \"guest\", password : \"guest\"}] ; \n\nvar username = msg.payload.username ;\nvar password = msg.payload.password ; \n\nmsg.payload = 1;\n\naccounts.forEach(function ( account ){\n    if ( account.username == username ) {\n       msg.payload = 2;\n       if ( account.password == password ) {\n           msg.payload = 0;\n       } \n    }\n});\n\nif ( msg.payload == 0 ) {\n  var currentsocketid = flow.get(\"clientid\") || undefined;\n  if ( currentsocketid !== undefined && currentsocketid !== msg.socketid ) msg.payload = 3;\n}\n// keep the original socketid from msg.socketid;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 402.0000457763672,
+        "y": 195.0000057220459,
+        "wires": [
+            [
+                "adaa3e4274db9bf6"
+            ]
+        ]
+    },
+    {
+        "id": "adaa3e4274db9bf6",
+        "type": "switch",
+        "z": "69e8e2867c581dbf",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 571.0000419616699,
+        "y": 225.9999885559082,
+        "wires": [
+            [
+                "4e91a9e1e9b73f3e"
+            ],
+            [
+                "3be220d1a1954bc8"
+            ],
+            [
+                "2d4a33b6f38ed705"
+            ],
+            [
+                "8e2323d916b6aa2b"
+            ]
+        ]
+    },
+    {
+        "id": "4e91a9e1e9b73f3e",
+        "type": "function",
+        "z": "69e8e2867c581dbf",
+        "name": "= 0 : Success",
+        "func": "/* activate session timer */\nvar sessionTimer =  flow.get(\"sessionTimer\") || 0; \nvar currTime = Date.now();\nflow.set(\"sessionTimer\", currTime);\nflow.set(\"clientid\", msg.socketid);\n/* ui-control payload */\nmsg.payload = { group: {\n    show : [\"Dashboard_SensorData\", \"Another_History\"],\n    hide : [\"Dashboard_Signin\"]\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 740.999885559082,
+        "y": 181.99999809265137,
+        "wires": [
+            [
+                "277629dc2c985fc4"
+            ]
+        ]
+    },
+    {
+        "id": "3be220d1a1954bc8",
+        "type": "function",
+        "z": "69e8e2867c581dbf",
+        "name": "= 1 : Unknown User",
+        "func": "msg.payload = \"Username Doesn't exist!!!\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 761.9998931884766,
+        "y": 219,
+        "wires": [
+            [
+                "b849309933ccaac2"
+            ]
+        ]
+    },
+    {
+        "id": "2d4a33b6f38ed705",
+        "type": "function",
+        "z": "69e8e2867c581dbf",
+        "name": "= 2 : Wrong Password",
+        "func": "msg.payload = \"Invalid Password\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 762.9999618530273,
+        "y": 256.0000123977661,
+        "wires": [
+            [
+                "b849309933ccaac2"
+            ]
+        ]
+    },
+    {
+        "id": "277629dc2c985fc4",
+        "type": "ui_ui_control",
+        "z": "69e8e2867c581dbf",
+        "name": "Go to Sensor/History Group",
+        "x": 1040,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b849309933ccaac2",
+        "type": "ui_toast",
+        "z": "69e8e2867c581dbf",
+        "position": "dialog",
+        "displayTime": "3",
+        "highlight": "",
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "Authentication Failed",
+        "name": "Authentication Failure Dialog",
+        "x": 1027.9999732971191,
+        "y": 239,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4179b45720db59f9",
+        "type": "inject",
+        "z": "69e8e2867c581dbf",
+        "name": "Timer",
+        "repeat": "3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 178.00000762939453,
+        "y": 427.99999237060547,
+        "wires": [
+            [
+                "cb34465366a50b9b",
+                "916d6451a1a7d520"
+            ]
+        ]
+    },
+    {
+        "id": "cb34465366a50b9b",
+        "type": "function",
+        "z": "69e8e2867c581dbf",
+        "name": "Detect Session Timer",
+        "func": "var sessionTimer =  flow.get(\"sessionTimer\") || 0; \nvar currTime = Date.now();\nvar SESSION_TIMEOUT = 60000; //1 minute\n\nif ( sessionTimer === 0 /* Inactive, No user signed in */ ) {\n    msg.payload = 2;\n} else {\n    if ( currTime - sessionTimer > SESSION_TIMEOUT ) {\n      msg.payload = 0;  \n    } else {\n      msg.payload = 1;        \n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 366.00003814697266,
+        "y": 394.00000762939453,
+        "wires": [
+            [
+                "1df246a38d025641"
+            ]
+        ]
+    },
+    {
+        "id": "1df246a38d025641",
+        "type": "switch",
+        "z": "69e8e2867c581dbf",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 536.000072479248,
+        "y": 392.00000762939453,
+        "wires": [
+            [
+                "1cfe3e1df12b5a24"
+            ],
+            [
+                "c45fad0523297d0e"
+            ],
+            [
+                "ac756a8929d5863a"
+            ]
+        ]
+    },
+    {
+        "id": "1cfe3e1df12b5a24",
+        "type": "function",
+        "z": "69e8e2867c581dbf",
+        "name": "Time-Out",
+        "func": "/* activate session timer */\nvar sessionTimer =  flow.get(\"sessionTimer\") || 0; \nflow.set(\"sessionTimer\", 0);\n\nmsg.socketid = flow.get(\"clientid\") || undefined;\nmsg.payload = \"Session Expired! Please singin again!\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 691.9999847412109,
+        "y": 365.0000114440918,
+        "wires": [
+            [
+                "08a7e9da422b9ebe",
+                "32cc5f726aefffd8"
+            ]
+        ]
+    },
+    {
+        "id": "08a7e9da422b9ebe",
+        "type": "ui_toast",
+        "z": "69e8e2867c581dbf",
+        "position": "dialog",
+        "displayTime": "3",
+        "highlight": "",
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "Session Timeout",
+        "name": "Time-Out Dialog",
+        "x": 879.500114440918,
+        "y": 331.0000114440918,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a14004c5d6101637",
+        "type": "ui_ui_control",
+        "z": "69e8e2867c581dbf",
+        "name": "Go to Signin Group",
+        "x": 1086.5000324249268,
+        "y": 366.99999618530273,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "32cc5f726aefffd8",
+        "type": "function",
+        "z": "69e8e2867c581dbf",
+        "name": "Sign-In Redirection",
+        "func": "var msg = {};\n\nmsg.socketid = flow.get(\"clientid\") || undefined;\nmsg.payload = { group: {\n    hide: [\"Site1_Site1Tank\", \"Site1_Generator1\", \"Site1_Generator2\", \"Site1_Generator3\", \"Tank\", \"Generator1\", \"Generator2\", \"Generator3\", \"Generator4\", \"Generator5\", \"Generator6\"],\n    show: [\"signin_dashboard\"]\n\n}\n};\n\nflow.set(\"clientid\", undefined);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890.0000228881836,
+        "y": 368.00000762939453,
+        "wires": [
+            [
+                "a14004c5d6101637"
+            ]
+        ]
+    },
+    {
+        "id": "9156fc21cab538f8",
+        "type": "ui_toast",
+        "z": "69e8e2867c581dbf",
+        "position": "bottom right",
+        "displayTime": "1",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "Timer",
+        "name": "Display Remaining Time",
+        "x": 699.7222023010254,
+        "y": 481.99999237060547,
+        "wires": []
+    },
+    {
+        "id": "916d6451a1a7d520",
+        "type": "function",
+        "z": "69e8e2867c581dbf",
+        "name": "Calculating Remaining Time (Debug)",
+        "func": "var sessionTimer =  flow.get(\"sessionTimer\") || 0; \nvar currTime = Date.now();\nvar remainingSecs = Math.floor((60000 - (currTime - sessionTimer))/1000) + 1;\n    \nif ( sessionTimer == 0 /* Inactive, No user signed in */ ) {\n    return null;\n} else {\n    \n    if ( remainingSecs <= 7 ) msg.payload = \"Remaining : \" + remainingSecs + \" secs\";  \n    else return null;\n}\n\nmsg.socketid = flow.get(\"clientid\") || \"B1234\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 416.0000305175781,
+        "y": 482.00002002716064,
+        "wires": [
+            [
+                "9156fc21cab538f8"
+            ]
+        ]
+    },
+    {
+        "id": "bd21af9ea12d80ac",
+        "type": "ui_ui_control",
+        "z": "69e8e2867c581dbf",
+        "name": "Stay in Sensor Group",
+        "x": 1036.500099182129,
+        "y": 406.0000057220459,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c45fad0523297d0e",
+        "type": "function",
+        "z": "69e8e2867c581dbf",
+        "name": "Sensor/History Goup",
+        "func": "var msg = {};\nmsg.socketid = flow.get(\"clientid\") || undefined;\nmsg.payload = { group: {\n    show: [\"Site1_Site1Tank\", \"Site1_Generator1\", \"Site1_Generator2\", \"Site1_Generator3\", \"Tank\", \"Generator1\", \"Generator2\", \"Generator3\", \"Generator4\", \"Generator5\", \"Generator6\"],\n    hide : [\"signin_dashboard\"]\n}\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 733.5000305175781,
+        "y": 406.00000381469727,
+        "wires": [
+            [
+                "bd21af9ea12d80ac"
+            ]
+        ]
+    },
+    {
+        "id": "ac756a8929d5863a",
+        "type": "function",
+        "z": "69e8e2867c581dbf",
+        "name": "Signin Goup",
+        "func": "var msg = {};\nmsg.payload = { group: {\n    hide: [\"Site1_Site1Tank\", \"Site1_Generator1\", \"Site1_Generator2\", \"Site1_Generator3\", \"Tank\", \"Generator1\", \"Generator2\", \"Generator3\", \"Generator4\", \"Generator5\", \"Generator6\"],\n    show: [\"signin_dashboard\"]\n}\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 704.5000915527344,
+        "y": 447.0000419616699,
+        "wires": [
+            [
+                "70e484afb3a2b790"
+            ]
+        ]
+    },
+    {
+        "id": "70e484afb3a2b790",
+        "type": "ui_ui_control",
+        "z": "69e8e2867c581dbf",
+        "name": "Go to Signin Group",
+        "x": 1030,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "190842838eed15b0",
+        "type": "debug",
+        "z": "69e8e2867c581dbf",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 371.5000419616699,
+        "y": 260.5347557067871,
+        "wires": []
+    },
+    {
+        "id": "bc29c666d7a16f93",
+        "type": "ui_toast",
+        "z": "69e8e2867c581dbf",
+        "position": "dialog",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "System In Use.",
+        "name": "System In-Use Dialog",
+        "x": 1011.1111793518066,
+        "y": 292.1215353012085,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8e2323d916b6aa2b",
+        "type": "function",
+        "z": "69e8e2867c581dbf",
+        "name": "= 4 : System In Use",
+        "func": "msg.payload = \"System is used by other user.\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 752.4443283081055,
+        "y": 293.1215286254883,
+        "wires": [
+            [
+                "bc29c666d7a16f93"
+            ]
+        ]
+    },
+    {
+        "id": "4e6156cf5623f756",
+        "type": "ui_group",
+        "name": "dashboard",
+        "tab": "b6762cc3a4396424",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b6762cc3a4396424",
+        "type": "ui_tab",
+        "name": "signin",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]

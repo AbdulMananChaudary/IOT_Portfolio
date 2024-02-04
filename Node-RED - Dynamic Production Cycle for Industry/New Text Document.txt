@@ -1,0 +1,34 @@
+The dashboard shall simulate an entire production run with cyclic processing of parts.
+It shall have start and stop buttons, a startup sequence, a stop sequence and shall be able to generate random machine alerts,
+random quality errors and also numeric values like temperature values or pressure values. 
+On the cyclic processing it is Important to generate random serial numbers for the part per cycle.
+A cycle start and stop operation might make sense in addition. All generated signals shall be pushed to an mqtt broker via the mqtt out node.
+
+Hello Simons,
+Thank you so much for reaching out. Contacting Fiverr Customer support was my last option as I wanted to resolve it through my Clients end. The issue is my client provided me a template of JSON file that he wanted in output. I made the exact same output using node-red but after sending him, he replied that your delivery is wrong. I asked him through alot of ways to atleast let me know what changes that he want but he simply said look at the requirements and my delivery is not as per my requirements. I said I have made exactly the same requirements following each and every step even I shared him the screenshots but he did not pin point the issue and simply said that my delivery is not according to his requirements. I asked him to get it check by some developer because there was no room for dissimilarity. It was exact output that he asked dynamically.
+
+His requirements were:
+[{
+
+"uuid": <uuid to identify the tag name"
+
+"systime": <utc timestamp>,
+
+"plctime": <local timestamp>,
+
+"value_integer": <only for integer values>,
+
+"value_string": <only for string values>,
+
+"value_bool": <only for bool values>,
+
+"value_double": <only for float / double values>
+
+}]
+
+and attached is the output that I generated for him.
+
+He is satisfied with other aspects but he is not satisfied with this part as well. I want fiverr team to look at this matter even fiverr can cross check it through some Node-red developer or any Programmer can tell this that it's a basic thing and i have made it exactly clear. 
+
+Thank You
+

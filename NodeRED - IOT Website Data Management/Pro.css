@@ -1,0 +1,81 @@
+
+body{
+    text-align: center;
+    background-color: #d6d7d7;
+}
+#enterDetails{  
+    background-color: #04645a; 
+    color: floralwhite;
+    margin: 0px 350px 0px 350px;
+}
+
+input {
+    width: 120px;
+}
+#contactAdmin{
+    color:blue;
+    font-size:16px;
+}
+#contactAdmin:hover{
+    color:rgb(17, 17, 186);
+    text-decoration: none;
+}
+
+
+/* First Three Inputs */
+#enterID,#enterName,#enterAge{
+    border-radius: 10px;
+    padding: 5px 100px ;
+    border: 2px solid #d6d7d7;
+    background-color:#d6d7d7;
+    color:black;
+}
+#enterID:hover,#enterName:hover,#enterAge:hover{
+    padding: 5px 101px ;
+    background-color:#d6d7d7;
+}
+
+#findID {
+    background-color:#d6d7d7;
+    border-radius: 10px;
+    padding: 5px 100px ;
+    border-color:#d6d7d7;
+    color:black;
+}
+#findID:hover{
+    padding: 5px 102px ;
+    background-color:#d6d7d7;
+    
+}
+
+
+/* Buttons */
+#insert,#update,#remove{
+    padding: 10px;
+    background-color:#04645a;
+    border-radius: 10px;
+    border-color:rgb(9, 148, 102);
+    color:white;
+}
+#insert:hover,#update:hover,#remove:hover{
+    box-shadow:10px;
+    background-color:#06574f;
+}
+#find{
+    padding: 3px 30px;
+    border-color:rgb(11, 127, 90);
+    border-radius: 10px;
+    background-color:rgb(11, 127, 90);
+    color:white;
+}
+#find:hover{
+    background-color:rgb(13, 103, 74);
+    border-color:rgb(13, 103, 74);
+
+}
+
+#findDetails {
+    background-color: rgb(11, 127, 90); 
+    color: whitesmoke;
+    margin: 0px 350px 0px 350px;
+}

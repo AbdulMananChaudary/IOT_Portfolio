@@ -1,0 +1,602 @@
+[
+    {
+        "id": "b24e41bee0f6953d",
+        "type": "ui_button",
+        "z": "a9dc0361.7c7878",
+        "name": "",
+        "group": "ee1e56eef3177b63",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "label": "Trigger Alarm",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "{\"text\":\"Alarm Has been Triggered\"}",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 440,
+        "y": 280,
+        "wires": [
+            [
+                "aa6cde78a9c2f85a",
+                "79aac696c36beabd",
+                "ec20ccf43a5e61ef"
+            ]
+        ]
+    },
+    {
+        "id": "70196eed74bb8e6f",
+        "type": "ui_switch",
+        "z": "a9dc0361.7c7878",
+        "name": "",
+        "label": "switch",
+        "tooltip": "",
+        "group": "ee1e56eef3177b63",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 410,
+        "y": 320,
+        "wires": [
+            [
+                "ef0dd725ec50cb8f"
+            ]
+        ]
+    },
+    {
+        "id": "aab24c9fccb9d9d5",
+        "type": "GSheet",
+        "z": "a9dc0361.7c7878",
+        "creds": "1e94ba3cdbd544d1",
+        "method": "update",
+        "action": "",
+        "sheet": "1jiwfRFN0ZyuI6_REvn0yPLaiEL7naLXjEHG6k3oPDDo",
+        "cells": "Sheet1!B4:B100",
+        "flatten": false,
+        "name": "Alarm",
+        "x": 690,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bce7b3d14c80b11f",
+        "type": "inject",
+        "z": "a9dc0361.7c7878",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "20",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Alarm Off",
+        "payloadType": "str",
+        "x": 170,
+        "y": 240,
+        "wires": [
+            [
+                "c4bdad76165b7e4f"
+            ]
+        ]
+    },
+    {
+        "id": "ef0dd725ec50cb8f",
+        "type": "GSheet",
+        "z": "a9dc0361.7c7878",
+        "creds": "1e94ba3cdbd544d1",
+        "method": "update",
+        "action": "",
+        "sheet": "1jiwfRFN0ZyuI6_REvn0yPLaiEL7naLXjEHG6k3oPDDo",
+        "cells": "Sheet1!C4:C100",
+        "flatten": false,
+        "name": "Switch",
+        "x": 690,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "24ad00fc382e0ff2",
+        "type": "ui_toast",
+        "z": "a9dc0361.7c7878",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 730,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "c4bdad76165b7e4f",
+        "type": "ui_button",
+        "z": "a9dc0361.7c7878",
+        "name": "",
+        "group": "ee1e56eef3177b63",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "label": "Alarm Off",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "Alarm Off",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 420,
+        "y": 240,
+        "wires": [
+            [
+                "aab24c9fccb9d9d5",
+                "24ad00fc382e0ff2",
+                "aa6cde78a9c2f85a"
+            ]
+        ]
+    },
+    {
+        "id": "aa6cde78a9c2f85a",
+        "type": "ui_text",
+        "z": "a9dc0361.7c7878",
+        "group": "ee1e56eef3177b63",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "text",
+        "format": "{{msg.payload.text}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 690,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "2383b7b5d30dd27f",
+        "type": "ui_audio",
+        "z": "a9dc0361.7c7878",
+        "name": "",
+        "group": "ee1e56eef3177b63",
+        "voice": "Google UK English Female",
+        "always": true,
+        "x": 700,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "8c194903f42c263e",
+        "type": "ui_slider",
+        "z": "a9dc0361.7c7878",
+        "name": "",
+        "label": "Intensity",
+        "tooltip": "",
+        "group": "ee1e56eef3177b63",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "className": "",
+        "x": 420,
+        "y": 360,
+        "wires": [
+            [
+                "5ed7a81c053638fd",
+                "123ece1f0e8b58ca"
+            ]
+        ]
+    },
+    {
+        "id": "123ece1f0e8b58ca",
+        "type": "GSheet",
+        "z": "a9dc0361.7c7878",
+        "creds": "1e94ba3cdbd544d1",
+        "method": "update",
+        "action": "",
+        "sheet": "1jiwfRFN0ZyuI6_REvn0yPLaiEL7naLXjEHG6k3oPDDo",
+        "cells": "Sheet1!D4:D100",
+        "flatten": false,
+        "name": "Intensity",
+        "x": 700,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b08d83d52ba4a332",
+        "type": "inject",
+        "z": "a9dc0361.7c7878",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "5",
+        "payloadType": "num",
+        "x": 190,
+        "y": 360,
+        "wires": [
+            [
+                "8c194903f42c263e"
+            ]
+        ]
+    },
+    {
+        "id": "a7b0fd8ff66201ac",
+        "type": "inject",
+        "z": "a9dc0361.7c7878",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "4",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "10",
+        "payloadType": "num",
+        "x": 190,
+        "y": 440,
+        "wires": [
+            [
+                "8c194903f42c263e"
+            ]
+        ]
+    },
+    {
+        "id": "2668d4ef1127e2e0",
+        "type": "inject",
+        "z": "a9dc0361.7c7878",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "2",
+        "payloadType": "num",
+        "x": 190,
+        "y": 280,
+        "wires": [
+            [
+                "8c194903f42c263e"
+            ]
+        ]
+    },
+    {
+        "id": "5ed7a81c053638fd",
+        "type": "ui_chart",
+        "z": "a9dc0361.7c7878",
+        "name": "",
+        "group": "ee1e56eef3177b63",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "label": "Intensity",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "10",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 700,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8b272184897b5ce6",
+        "type": "inject",
+        "z": "a9dc0361.7c7878",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "7",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "7",
+        "payloadType": "num",
+        "x": 190,
+        "y": 400,
+        "wires": [
+            [
+                "8c194903f42c263e"
+            ]
+        ]
+    },
+    {
+        "id": "9e8f3e27096629c1",
+        "type": "inject",
+        "z": "a9dc0361.7c7878",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "8",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "4",
+        "payloadType": "num",
+        "x": 190,
+        "y": 320,
+        "wires": [
+            [
+                "8c194903f42c263e"
+            ]
+        ]
+    },
+    {
+        "id": "79aac696c36beabd",
+        "type": "whin_send",
+        "z": "a9dc0361.7c7878",
+        "name": "whin",
+        "auth": "b45d343ee333d687",
+        "x": 390,
+        "y": 540,
+        "wires": [
+            [
+                "6af56711c3ed1196"
+            ]
+        ]
+    },
+    {
+        "id": "9192b2b034a5d727",
+        "type": "whin_receive",
+        "z": "a9dc0361.7c7878",
+        "name": "whin",
+        "auth": "27604f41ce847659",
+        "inputtype": "button",
+        "buttonState": false,
+        "inputs": 0,
+        "x": 210,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b2de6ce9f97fe3d4",
+        "type": "whin_group_commander",
+        "z": "a9dc0361.7c7878",
+        "name": "",
+        "auth": "b45d343ee333d687",
+        "x": 470,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "87989444e5b88875",
+        "type": "inject",
+        "z": "a9dc0361.7c7878",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"text\":\"Alarm Has been Triggered\"}",
+        "payloadType": "json",
+        "x": 150,
+        "y": 520,
+        "wires": [
+            [
+                "79aac696c36beabd"
+            ]
+        ]
+    },
+    {
+        "id": "6af56711c3ed1196",
+        "type": "debug",
+        "z": "a9dc0361.7c7878",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "ec20ccf43a5e61ef",
+        "type": "function",
+        "z": "a9dc0361.7c7878",
+        "name": "JavaScript Function",
+        "func": "msg.payload = msg.payload.text;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 460,
+        "wires": [
+            [
+                "aab24c9fccb9d9d5",
+                "24ad00fc382e0ff2",
+                "2383b7b5d30dd27f",
+                "a482491564e74a82"
+            ]
+        ]
+    },
+    {
+        "id": "a482491564e74a82",
+        "type": "debug",
+        "z": "a9dc0361.7c7878",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "ee1e56eef3177b63",
+        "type": "ui_group",
+        "name": "IOT Automation",
+        "tab": "47c2da792f2f8a68",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "1e94ba3cdbd544d1",
+        "type": "gauth",
+        "name": "node-red@warm-upgrade-376918.iam.gserviceaccount.com"
+    },
+    {
+        "id": "b45d343ee333d687",
+        "type": "whin_config",
+        "name": "whin",
+        "apikey": "e11dae1aadmsh63f7de3bc4a61efp1c6293jsnf4bed6e24540"
+    },
+    {
+        "id": "27604f41ce847659",
+        "type": "whin_config",
+        "name": "whin",
+        "apikey": "e11dae1aadmsh63f7de3bc4a61efp1c6293jsnf4bed6e24540"
+    },
+    {
+        "id": "47c2da792f2f8a68",
+        "type": "ui_tab",
+        "name": "IOT",
+        "icon": "dashboard",
+        "order": 3,
+        "disabled": false,
+        "hidden": false
+    }
+]

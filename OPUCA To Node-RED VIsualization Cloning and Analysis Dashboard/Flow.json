@@ -1,0 +1,1140 @@
+[
+    {
+        "id": "52bec6884a30d4d0",
+        "type": "group",
+        "z": "dd5200623d9dcec0",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "21b37495b9e57f17",
+            "4e0746c6922b2e54",
+            "86cc6da6141c8603",
+            "28e95af76683b04b",
+            "d68874e60f92f1f7",
+            "35a28a94c27316ac",
+            "02921d168efce886",
+            "97d32d2d2b24d33c",
+            "245633226ac879f0",
+            "3e36ff67e6bc3549",
+            "714e6973dad13695"
+        ],
+        "x": 1104,
+        "y": 19,
+        "w": 662,
+        "h": 242
+    },
+    {
+        "id": "21b37495b9e57f17",
+        "type": "debug",
+        "z": "dd5200623d9dcec0",
+        "g": "52bec6884a30d4d0",
+        "name": "debug 121",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1430,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "4e0746c6922b2e54",
+        "type": "function",
+        "z": "dd5200623d9dcec0",
+        "g": "52bec6884a30d4d0",
+        "name": "Warning",
+        "func": "var lowerLimit = flow.get('lowLimit')\nvar higherLimit = flow.get('highLimit')\nif ( msg.payload.co2 >= higherLimit )\n{\n    msg.payload = \"Limit Value Exceed Upper Threshold\"\n    return msg;\n}\nelse if(msg.payload.co2 <= lowerLimit)\n{\n    msg.payload = \"Limit Low than Lower Threshold\"\n    return msg;\n}\nelse\n{\n    return null;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1240,
+        "y": 120,
+        "wires": [
+            [
+                "86cc6da6141c8603",
+                "21b37495b9e57f17"
+            ]
+        ]
+    },
+    {
+        "id": "86cc6da6141c8603",
+        "type": "ui_toast",
+        "z": "dd5200623d9dcec0",
+        "g": "52bec6884a30d4d0",
+        "position": "top right",
+        "displayTime": "5",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 1470,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "28e95af76683b04b",
+        "type": "comment",
+        "z": "dd5200623d9dcec0",
+        "g": "52bec6884a30d4d0",
+        "name": "Warning",
+        "info": "",
+        "x": 1240,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "d68874e60f92f1f7",
+        "type": "ui_slider",
+        "z": "dd5200623d9dcec0",
+        "g": "52bec6884a30d4d0",
+        "name": "",
+        "label": "Set Lower Limit",
+        "tooltip": "",
+        "group": "48726bbac65acb3e",
+        "order": 3,
+        "width": 8,
+        "height": 1,
+        "passthru": true,
+        "outs": "end",
+        "topic": "slider",
+        "topicType": "str",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "className": "",
+        "x": 1240,
+        "y": 180,
+        "wires": [
+            [
+                "97d32d2d2b24d33c"
+            ]
+        ]
+    },
+    {
+        "id": "35a28a94c27316ac",
+        "type": "ui_slider",
+        "z": "dd5200623d9dcec0",
+        "g": "52bec6884a30d4d0",
+        "name": "",
+        "label": "Set Higher Limit",
+        "tooltip": ".",
+        "group": "48726bbac65acb3e",
+        "order": 4,
+        "width": 8,
+        "height": 1,
+        "passthru": true,
+        "outs": "end",
+        "topic": "slider",
+        "topicType": "str",
+        "min": 0,
+        "max": "20",
+        "step": 1,
+        "className": "",
+        "x": 1240,
+        "y": 220,
+        "wires": [
+            [
+                "02921d168efce886"
+            ]
+        ]
+    },
+    {
+        "id": "02921d168efce886",
+        "type": "function",
+        "z": "dd5200623d9dcec0",
+        "g": "52bec6884a30d4d0",
+        "name": "Set Higher Limit",
+        "func": "var slider = msg.payload;\nflow.set('highLimit', slider);\nvar name = flow.get('highLimit')\nmsg.payload = name;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1440,
+        "y": 220,
+        "wires": [
+            [
+                "245633226ac879f0"
+            ]
+        ]
+    },
+    {
+        "id": "97d32d2d2b24d33c",
+        "type": "function",
+        "z": "dd5200623d9dcec0",
+        "g": "52bec6884a30d4d0",
+        "name": "Set Lower Limit",
+        "func": "var slider = msg.payload; \nflow.set('lowLimit', slider);\nvar name = flow.get('lowLimit')\nmsg.payload = name;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1440,
+        "y": 180,
+        "wires": [
+            [
+                "3e36ff67e6bc3549"
+            ]
+        ]
+    },
+    {
+        "id": "245633226ac879f0",
+        "type": "debug",
+        "z": "dd5200623d9dcec0",
+        "g": "52bec6884a30d4d0",
+        "name": "debug 124",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1650,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "3e36ff67e6bc3549",
+        "type": "debug",
+        "z": "dd5200623d9dcec0",
+        "g": "52bec6884a30d4d0",
+        "name": "debug 123",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1650,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "714e6973dad13695",
+        "type": "link in",
+        "z": "dd5200623d9dcec0",
+        "g": "52bec6884a30d4d0",
+        "name": "link in 30",
+        "links": [
+            "50436da241daaf84"
+        ],
+        "x": 1145,
+        "y": 120,
+        "wires": [
+            [
+                "4e0746c6922b2e54"
+            ]
+        ]
+    },
+    {
+        "id": "48726bbac65acb3e",
+        "type": "ui_group",
+        "name": "Actual Flow",
+        "tab": "beed44b5db2b130a",
+        "order": 1,
+        "disp": true,
+        "width": 8,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "beed44b5db2b130a",
+        "type": "ui_tab",
+        "name": "GUI Interface",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "556faf358958c2ab",
+        "type": "group",
+        "z": "dd5200623d9dcec0",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "0cd4bc7f8ef0fa36",
+            "fe6f74d5.674ec8",
+            "9e8ca9766079333b",
+            "9701928735985afe",
+            "42c269c4a96489c4",
+            "65cac372874feb1c"
+        ],
+        "x": 434,
+        "y": 19,
+        "w": 652,
+        "h": 242
+    },
+    {
+        "id": "0cd4bc7f8ef0fa36",
+        "type": "file",
+        "z": "dd5200623d9dcec0",
+        "g": "556faf358958c2ab",
+        "name": "",
+        "filename": "C:\\Users\\Abdul Mannan\\Desktop\\PLC\\file.csv",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 890,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fe6f74d5.674ec8",
+        "type": "csv",
+        "z": "dd5200623d9dcec0",
+        "g": "556faf358958c2ab",
+        "name": "",
+        "sep": ",",
+        "hdrin": "",
+        "hdrout": "all",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "co2, Totalizer_Weekly, Totalizer_Monthly, Error",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": false,
+        "include_null_values": false,
+        "x": 610,
+        "y": 140,
+        "wires": [
+            [
+                "0cd4bc7f8ef0fa36"
+            ]
+        ]
+    },
+    {
+        "id": "9e8ca9766079333b",
+        "type": "ui_table",
+        "z": "dd5200623d9dcec0",
+        "g": "556faf358958c2ab",
+        "group": "148b3a9ee9a103bc",
+        "name": "",
+        "order": 1,
+        "width": 14,
+        "height": "5",
+        "columns": [],
+        "outputs": 0,
+        "cts": false,
+        "x": 850,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "9701928735985afe",
+        "type": "function",
+        "z": "dd5200623d9dcec0",
+        "g": "556faf358958c2ab",
+        "name": "Table",
+        "func": "//{\"co2\":12,\"Totalizer_Weekly\":100,\"Totalizer_Monthly\":1000,\"Error\":\"Error One Occured\"}\n\nif (msg.topic == \"flowmeter1\") {\n    var co21 = msg.payload.co2;\n    var tw1 = msg.payload.Totalizer_Weekly;\n    var tm1 = msg.payload.Totalizer_Monthly;\n    var error1 = msg.payload.Error;\n    flow.set('co21', co21);\n    flow.set('tw1', tw1);\n    flow.set('tm1', tm1);\n    flow.set('error1', error1);\n}\n\nelse if (msg.topic == \"flowmeter2\") {\n    var co22 = msg.payload.co2;\n    var tw2 = msg.payload.Totalizer_Weekly;\n    var tm2 = msg.payload.Totalizer_Monthly;\n    var error2 = msg.payload.Error;\n    flow.set('co22', co22);\n    flow.set('tw2', tw2);\n    flow.set('tm2', tm2);\n    flow.set('error2', error2);\n}\n\nelse if (msg.topic == \"flowmeter3\") {\n    var co23 = msg.payload.co2;\n    var tw3 = msg.payload.Totalizer_Weekly;\n    var tm3 = msg.payload.Totalizer_Monthly;\n    var error3 = msg.payload.Error;\n    flow.set('co23', co23);\n    flow.set('tw3', tw3);\n    flow.set('tm3', tm3);\n    flow.set('error3', error3);\n}\n\nelse if (msg.topic == \"flowmeter4\") {\n    var co24 = msg.payload.co2;\n    var tw4 = msg.payload.Totalizer_Weekly;\n    var tm4 = msg.payload.Totalizer_Monthly;\n    var error4 = msg.payload.Error;\n    flow.set('co24', co24);\n    flow.set('tw4', tw4);\n    flow.set('tm4', tm4);\n    flow.set('error4', error4);\n}\n\nif (msg.topic == \"flowmeter5\") {\n    var co25 = msg.payload.co2;\n    var tw5 = msg.payload.Totalizer_Weekly;\n    var tm5 = msg.payload.Totalizer_Monthly;\n    var error5 = msg.payload.Error;\n    flow.set('co25', co25);\n    flow.set('tw5', tw5);\n    flow.set('tm5', tm5);\n    flow.set('error5', error5);\n}\n\nelse if (msg.topic == \"flowmeter6\") {\n    var co26 = msg.payload.co2;\n    var tw6 = msg.payload.Totalizer_Weekly;\n    var tm6 = msg.payload.Totalizer_Monthly;\n    var error6 = msg.payload.Error;\n    flow.set('co26', co26);\n    flow.set('tw6', tw6);\n    flow.set('tm6', tm6);\n    flow.set('error6', error6);\n}\nelse if (msg.topic == \"flowmeter7\") {\n    var co27 = msg.payload.co2;\n    var tw7 = msg.payload.Totalizer_Weekly;\n    var tm7 = msg.payload.Totalizer_Monthly;\n    var error7 = msg.payload.Error;\n    flow.set('co27', co27);\n    flow.set('tw7', tw7);\n    flow.set('tm7', tm7);\n    flow.set('error7', error7);\n}\n\nmsg.payload = [\n    {\n     \"Flow Meter\":\"Flow Meter 1\",\n        \"co2\": flow.get('co21')||0,\n        \"TotalizerW\": flow.get('tw1')||0,\n        \"TotalizerM\": flow.get('tm1')||0,\n        \"Error\": flow.get('error1')||0\n     \n    },\n    {\n        \"Flow Meter\": \"Flow Meter 2\",\n        \"co2\": flow.get('co22') || 0,\n        \"TotalizerW\": flow.get('tw2') || 0,\n        \"TotalizerM\": flow.get('tm2') || 0,\n        \"Error\": flow.get('error2') || 0\n\n    },\n    {\n        \"Flow Meter\": \"Flow Meter 3\",\n        \"co2\": flow.get('co23') || 0,\n        \"TotalizerW\": flow.get('tw3') || 0,\n        \"TotalizerM\": flow.get('tm3') || 0,\n        \"Error\": flow.get('error3') || 0\n\n    },\n    {\n        \"Flow Meter\": \"Flow Meter 4\",\n        \"co2\": flow.get('co24') || 0,\n        \"TotalizerW\": flow.get('tw4') || 0,\n        \"TotalizerM\": flow.get('tm4') || 0,\n        \"Error\": flow.get('error4') || 0\n\n    },\n    {\n        \"Flow Meter\": \"Flow Meter 5\",\n        \"co2\": flow.get('co25') || 0,\n        \"TotalizerW\": flow.get('tw5') || 0,\n        \"TotalizerM\": flow.get('tm5') || 0,\n        \"Error\": flow.get('error5') || 0\n\n    },\n    {\n        \"Flow Meter\": \"Flow Meter 6\",\n        \"co2\": flow.get('co26') || 0,\n        \"TotalizerW\": flow.get('tw6') || 0,\n        \"TotalizerM\": flow.get('tm6') || 0,\n        \"Error\": flow.get('error6') || 0\n\n    },\n    {\n        \"Flow Meter\": \"Flow Meter 7\",\n        \"co2\": flow.get('co27') || 0,\n        \"TotalizerW\": flow.get('tw7') || 0,\n        \"TotalizerM\": flow.get('tm7') || 0,\n        \"Error\": flow.get('error7') || 0\n\n    }\n]\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 220,
+        "wires": [
+            [
+                "9e8ca9766079333b"
+            ]
+        ]
+    },
+    {
+        "id": "42c269c4a96489c4",
+        "type": "link in",
+        "z": "dd5200623d9dcec0",
+        "g": "556faf358958c2ab",
+        "name": "link in 29",
+        "links": [
+            "50436da241daaf84"
+        ],
+        "x": 495,
+        "y": 180,
+        "wires": [
+            [
+                "fe6f74d5.674ec8",
+                "9701928735985afe"
+            ]
+        ]
+    },
+    {
+        "id": "65cac372874feb1c",
+        "type": "comment",
+        "z": "dd5200623d9dcec0",
+        "g": "556faf358958c2ab",
+        "name": "Table and CSV",
+        "info": "",
+        "x": 540,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "148b3a9ee9a103bc",
+        "type": "ui_group",
+        "name": "Tabular Form",
+        "tab": "beed44b5db2b130a",
+        "order": 3,
+        "disp": true,
+        "width": 14,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "6b5bfa69951235a6",
+        "type": "group",
+        "z": "dd5200623d9dcec0",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "e802ded1c299257d",
+            "a27e353af50e4af7",
+            "0641d364299225b0",
+            "d6508d15c95c70e8",
+            "741c8e96ac108dc8",
+            "1484d778819e8adc",
+            "00a90b9851e1b6fc",
+            "349c9155322fb5a3",
+            "b023f725856324de",
+            "bb594b3e3f3a19b9",
+            "e4d718a9737afc05",
+            "8ff69d7f90c03ab2",
+            "4fb146db109c2dd6",
+            "91f0a98157c46452"
+        ],
+        "x": 434,
+        "y": 299,
+        "w": 1332,
+        "h": 424.5
+    },
+    {
+        "id": "e802ded1c299257d",
+        "type": "function",
+        "z": "dd5200623d9dcec0",
+        "g": "6b5bfa69951235a6",
+        "name": "CO2 Sorting Depending upon Weeks and Months",
+        "func": "if (msg.topic == \"flowmeter1\") {\n    var co21 = { payload: msg.payload.co2, topic:\"Flow1_CO2\"};\n    var totalizerW1 = { payload: msg.payload.Totalizer_Weekly, topic: \"Flow1_CO2\" };\n    var totalizerM1 = { payload: msg.payload.Totalizer_Monthly, topic: \"Flow1_CO2\" };\n\n}\nelse if (msg.topic == \"flowmeter2\") {\n    var co22 = { payload: msg.payload.co2, topic: \"Flow2_CO2\" };\n    var totalizerW2 = { payload: msg.payload.Totalizer_Weekly, topic: \"Flow2_CO2\" };\n    var totalizerM2 = { payload: msg.payload.Totalizer_Monthly, topic: \"Flow2_CO2\" };\n}\nelse if (msg.topic == \"flowmeter3\") {\n    var co23 = { payload: msg.payload.co2, topic: \"Flow3_CO2\" };\n    var totalizerW3 = { payload: msg.payload.Totalizer_Weekly, topic: \"Flow3_CO2\" };\n    var totalizerM3 = { payload: msg.payload.Totalizer_Monthly, topic: \"Flow3_CO2\" };\n}\n\nelse if (msg.topic == \"flowmeter4\") {\n    var co24 = { payload: msg.payload.co2, topic: \"Flow4_CO2\" };\n    var totalizerW4 = { payload: msg.payload.Totalizer_Weekly, topic: \"Flow4_CO2\"};\n    var totalizerM4 = { payload: msg.payload.Totalizer_Monthly, topic: \"Flow4_CO2\" };\n}\nelse if (msg.topic == \"flowmeter5\") {\n    var co25 = { payload: msg.payload.co2, topic: \"Flow5_CO2\" };\n    var totalizerW5 = { payload: msg.payload.Totalizer_Weekly, topic: \"Flow5_CO2\" };\n    var totalizerM5 = { payload: msg.payload.Totalizer_Monthly, topic: \"Flow5_CO2\"};\n}\nelse if (msg.topic == \"flowmeter6\") {\n    var co26 = { payload: msg.payload.co2, topic: \"Flow6_CO2\" };\n    var totalizerW6 = { payload: msg.payload.Totalizer_Weekly, topic: \"Flow6_CO2\" };\n    var totalizerM6 = { payload: msg.payload.Totalizer_Monthly, topic: \"Flow6_CO2\"};\n}\nelse if (msg.topic == \"flowmeter7\") {\n    var co27 = { payload: msg.payload.co2, topic: \"Flow7_CO2\" };\n    var totalizerW7 = { payload: msg.payload.Totalizer_Weekly, topic: \"Flow7_CO2\" };\n    var totalizerM7 = { payload: msg.payload.Totalizer_Monthly, topic: \"Flow7_CO2\" };\n}\n\nreturn [co21, totalizerW1, totalizerM1, co22, totalizerW2, totalizerM2, co23, totalizerW3, totalizerM3, co24, totalizerW4, totalizerM4, co25, totalizerW5, totalizerM5, co26, totalizerW6, totalizerM6, co27, totalizerW7, totalizerM7] ",
+        "outputs": 21,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 540,
+        "wires": [
+            [
+                "349c9155322fb5a3"
+            ],
+            [
+                "b023f725856324de"
+            ],
+            [
+                "bb594b3e3f3a19b9"
+            ],
+            [
+                "349c9155322fb5a3"
+            ],
+            [
+                "b023f725856324de"
+            ],
+            [
+                "bb594b3e3f3a19b9"
+            ],
+            [
+                "349c9155322fb5a3"
+            ],
+            [
+                "b023f725856324de"
+            ],
+            [
+                "bb594b3e3f3a19b9"
+            ],
+            [
+                "349c9155322fb5a3"
+            ],
+            [
+                "b023f725856324de"
+            ],
+            [
+                "bb594b3e3f3a19b9"
+            ],
+            [
+                "349c9155322fb5a3"
+            ],
+            [
+                "b023f725856324de"
+            ],
+            [
+                "bb594b3e3f3a19b9"
+            ],
+            [
+                "349c9155322fb5a3"
+            ],
+            [
+                "b023f725856324de"
+            ],
+            [
+                "bb594b3e3f3a19b9"
+            ],
+            [
+                "349c9155322fb5a3"
+            ],
+            [
+                "b023f725856324de"
+            ],
+            [
+                "bb594b3e3f3a19b9"
+            ]
+        ]
+    },
+    {
+        "id": "a27e353af50e4af7",
+        "type": "ui_chart",
+        "z": "dd5200623d9dcec0",
+        "g": "6b5bfa69951235a6",
+        "name": "",
+        "group": "e195277e4a486cef",
+        "order": 1,
+        "width": 7,
+        "height": 7,
+        "label": "Weekly",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "dd HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "604800",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": true,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1660,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0641d364299225b0",
+        "type": "ui_chart",
+        "z": "dd5200623d9dcec0",
+        "g": "6b5bfa69951235a6",
+        "name": "",
+        "group": "48726bbac65acb3e",
+        "order": 1,
+        "width": 8,
+        "height": 5,
+        "label": "Actual Flow",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "10",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1670,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d6508d15c95c70e8",
+        "type": "ui_chart",
+        "z": "dd5200623d9dcec0",
+        "g": "6b5bfa69951235a6",
+        "name": "",
+        "group": "e195277e4a486cef",
+        "order": 2,
+        "width": 7,
+        "height": 7,
+        "label": "Monthly",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "D/M",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "4",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "604800",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1660,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "741c8e96ac108dc8",
+        "type": "inject",
+        "z": "dd5200623d9dcec0",
+        "g": "6b5bfa69951235a6",
+        "name": "Reset Tables",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[]",
+        "payloadType": "json",
+        "x": 1470,
+        "y": 640,
+        "wires": [
+            [
+                "0641d364299225b0",
+                "a27e353af50e4af7",
+                "d6508d15c95c70e8",
+                "1484d778819e8adc"
+            ]
+        ]
+    },
+    {
+        "id": "1484d778819e8adc",
+        "type": "ui_chart",
+        "z": "dd5200623d9dcec0",
+        "g": "6b5bfa69951235a6",
+        "name": "",
+        "group": "48726bbac65acb3e",
+        "order": 2,
+        "width": 8,
+        "height": 6,
+        "label": "Bar Chart",
+        "chartType": "horizontalBar",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1660,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "00a90b9851e1b6fc",
+        "type": "link in",
+        "z": "dd5200623d9dcec0",
+        "g": "6b5bfa69951235a6",
+        "name": "link in 28",
+        "links": [
+            "50436da241daaf84"
+        ],
+        "x": 475,
+        "y": 540,
+        "wires": [
+            [
+                "e802ded1c299257d"
+            ]
+        ]
+    },
+    {
+        "id": "349c9155322fb5a3",
+        "type": "link out",
+        "z": "dd5200623d9dcec0",
+        "g": "6b5bfa69951235a6",
+        "name": "link out 46",
+        "mode": "link",
+        "links": [
+            "e4d718a9737afc05"
+        ],
+        "x": 1295,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "b023f725856324de",
+        "type": "link out",
+        "z": "dd5200623d9dcec0",
+        "g": "6b5bfa69951235a6",
+        "name": "link out 47",
+        "mode": "link",
+        "links": [
+            "8ff69d7f90c03ab2"
+        ],
+        "x": 1295,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "bb594b3e3f3a19b9",
+        "type": "link out",
+        "z": "dd5200623d9dcec0",
+        "g": "6b5bfa69951235a6",
+        "name": "link out 48",
+        "mode": "link",
+        "links": [
+            "4fb146db109c2dd6"
+        ],
+        "x": 1295,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "e4d718a9737afc05",
+        "type": "link in",
+        "z": "dd5200623d9dcec0",
+        "g": "6b5bfa69951235a6",
+        "name": "link in 31",
+        "links": [
+            "349c9155322fb5a3"
+        ],
+        "x": 1405,
+        "y": 480,
+        "wires": [
+            [
+                "1484d778819e8adc",
+                "0641d364299225b0"
+            ]
+        ]
+    },
+    {
+        "id": "8ff69d7f90c03ab2",
+        "type": "link in",
+        "z": "dd5200623d9dcec0",
+        "g": "6b5bfa69951235a6",
+        "name": "link in 32",
+        "links": [
+            "b023f725856324de"
+        ],
+        "x": 1405,
+        "y": 520,
+        "wires": [
+            [
+                "a27e353af50e4af7"
+            ]
+        ]
+    },
+    {
+        "id": "4fb146db109c2dd6",
+        "type": "link in",
+        "z": "dd5200623d9dcec0",
+        "g": "6b5bfa69951235a6",
+        "name": "link in 33",
+        "links": [
+            "bb594b3e3f3a19b9"
+        ],
+        "x": 1405,
+        "y": 560,
+        "wires": [
+            [
+                "d6508d15c95c70e8"
+            ]
+        ]
+    },
+    {
+        "id": "91f0a98157c46452",
+        "type": "comment",
+        "z": "dd5200623d9dcec0",
+        "g": "6b5bfa69951235a6",
+        "name": "Visualization",
+        "info": "",
+        "x": 530,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "e195277e4a486cef",
+        "type": "ui_group",
+        "name": "Visualization",
+        "tab": "beed44b5db2b130a",
+        "order": 2,
+        "disp": true,
+        "width": "14",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "6c1eee56c434db8e",
+        "type": "group",
+        "z": "dd5200623d9dcec0",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "c1c8a86ca6afc4c4",
+            "faedf44613bc9dc2",
+            "7f95d9ac2c94497a",
+            "50be1265bd810488",
+            "d574cb1001ba7ed9",
+            "aa96befda8d471f8",
+            "7cf6485ecc03c850",
+            "50436da241daaf84",
+            "6c6435bf32ab3b13"
+        ],
+        "x": 34,
+        "y": 139,
+        "w": 342,
+        "h": 362
+    },
+    {
+        "id": "c1c8a86ca6afc4c4",
+        "type": "inject",
+        "z": "dd5200623d9dcec0",
+        "g": "6c1eee56c434db8e",
+        "name": "Flow Meter 1",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "flowmeter1",
+        "payload": "{\"co2\":2,\"Totalizer_Weekly\":150,\"Totalizer_Monthly\":1500,\"Error\":\"Error One Occured\"}",
+        "payloadType": "json",
+        "x": 180,
+        "y": 220,
+        "wires": [
+            [
+                "50436da241daaf84"
+            ]
+        ]
+    },
+    {
+        "id": "faedf44613bc9dc2",
+        "type": "inject",
+        "z": "dd5200623d9dcec0",
+        "g": "6c1eee56c434db8e",
+        "name": "Flow Meter 2",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "flowmeter2",
+        "payload": "{\"co2\":8,\"Totalizer_Weekly\":250,\"Totalizer_Monthly\":2500,\"Error\":\"Error Two Occured\"}",
+        "payloadType": "json",
+        "x": 180,
+        "y": 260,
+        "wires": [
+            [
+                "50436da241daaf84"
+            ]
+        ]
+    },
+    {
+        "id": "7f95d9ac2c94497a",
+        "type": "inject",
+        "z": "dd5200623d9dcec0",
+        "g": "6c1eee56c434db8e",
+        "name": "Flow Meter 3",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "flowmeter3",
+        "payload": "{\"co2\":3.4,\"Totalizer_Weekly\":180,\"Totalizer_Monthly\":1600,\"Error\":\"Error Three Occured\"}",
+        "payloadType": "json",
+        "x": 180,
+        "y": 300,
+        "wires": [
+            [
+                "50436da241daaf84"
+            ]
+        ]
+    },
+    {
+        "id": "50be1265bd810488",
+        "type": "inject",
+        "z": "dd5200623d9dcec0",
+        "g": "6c1eee56c434db8e",
+        "name": "Flow Meter 4",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "flowmeter4",
+        "payload": "{\"co2\":9,\"Totalizer_Weekly\":300,\"Totalizer_Monthly\":2700,\"Error\":\"Error Four Occured\"}",
+        "payloadType": "json",
+        "x": 180,
+        "y": 340,
+        "wires": [
+            [
+                "50436da241daaf84"
+            ]
+        ]
+    },
+    {
+        "id": "d574cb1001ba7ed9",
+        "type": "inject",
+        "z": "dd5200623d9dcec0",
+        "g": "6c1eee56c434db8e",
+        "name": "Flow Meter 5",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "flowmeter5",
+        "payload": "{\"co2\":14,\"Totalizer_Weekly\":700,\"Totalizer_Monthly\":4700,\"Error\":\"Error Five Occured\"}",
+        "payloadType": "json",
+        "x": 180,
+        "y": 380,
+        "wires": [
+            [
+                "50436da241daaf84"
+            ]
+        ]
+    },
+    {
+        "id": "aa96befda8d471f8",
+        "type": "inject",
+        "z": "dd5200623d9dcec0",
+        "g": "6c1eee56c434db8e",
+        "name": "Flow Meter 6",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "flowmeter6",
+        "payload": "{\"co2\":9.2,\"Totalizer_Weekly\":320,\"Totalizer_Monthly\":2340,\"Error\":\"Error Six Occured\"}",
+        "payloadType": "json",
+        "x": 180,
+        "y": 420,
+        "wires": [
+            [
+                "50436da241daaf84"
+            ]
+        ]
+    },
+    {
+        "id": "7cf6485ecc03c850",
+        "type": "inject",
+        "z": "dd5200623d9dcec0",
+        "g": "6c1eee56c434db8e",
+        "name": "Flow Meter 7",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "flowmeter7",
+        "payload": "{\"co2\":4.4,\"Totalizer_Weekly\":231,\"Totalizer_Monthly\":5300,\"Error\":\"Error Seven Occured\"}",
+        "payloadType": "json",
+        "x": 180,
+        "y": 460,
+        "wires": [
+            [
+                "50436da241daaf84"
+            ]
+        ]
+    },
+    {
+        "id": "50436da241daaf84",
+        "type": "link out",
+        "z": "dd5200623d9dcec0",
+        "g": "6c1eee56c434db8e",
+        "name": "link out 45",
+        "mode": "link",
+        "links": [
+            "00a90b9851e1b6fc",
+            "42c269c4a96489c4",
+            "714e6973dad13695"
+        ],
+        "x": 335,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "6c6435bf32ab3b13",
+        "type": "comment",
+        "z": "dd5200623d9dcec0",
+        "g": "6c1eee56c434db8e",
+        "name": "Input",
+        "info": "",
+        "x": 110,
+        "y": 180,
+        "wires": []
+    }
+]

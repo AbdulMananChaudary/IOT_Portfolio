@@ -1,0 +1,565 @@
+[
+    {
+        "id": "06a6f6b4230fe20f",
+        "type": "mqtt in",
+        "z": "94bcde743e287b79",
+        "name": "",
+        "topic": "polimi/challenge_2/2023/id_code_generator",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "621a445fccca02f8",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 140,
+        "wires": [
+            [
+                "4c890d751258d21b",
+                "0a68254c8787e765"
+            ]
+        ]
+    },
+    {
+        "id": "1927fcde715bc819",
+        "type": "function",
+        "z": "94bcde743e287b79",
+        "name": "function 15",
+        "func": "// Extract the ID from the parsed JSON object\nvar id = msg.payload.id;\n\n// Add the last 4 digits of your person code (team leader)\nvar xyzw = 2911; // Replace with your actual last 4 digits\nvar idWithXYZW = parseInt(id) + xyzw;\n\n// Take the remainder of division by 7711\nvar n = idWithXYZW % 7711;\n\n// Set the result as a new message property\nmsg.result = n;\n\n// Return the modified message object\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 220,
+        "wires": [
+            [
+                "cda06238a3483737"
+            ]
+        ]
+    },
+    {
+        "id": "abc89f4f2fdb46c7",
+        "type": "json",
+        "z": "94bcde743e287b79",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 790,
+        "y": 140,
+        "wires": [
+            [
+                "1927fcde715bc819"
+            ]
+        ]
+    },
+    {
+        "id": "427f5ffd5e6829b4",
+        "type": "mqtt out",
+        "z": "94bcde743e287b79",
+        "name": "",
+        "topic": "polimi/challenge_2/2023/id_code_result",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "621a445fccca02f8",
+        "x": 1040,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "4678338305947ea0",
+        "type": "switch",
+        "z": "94bcde743e287b79",
+        "name": "",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "hask",
+                "v": "polimi/challenge_2/2023/mqtt_publish/",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 730,
+        "y": 340,
+        "wires": [
+            [
+                "427f5ffd5e6829b4"
+            ],
+            [
+                "6dce143db654d40c"
+            ]
+        ]
+    },
+    {
+        "id": "9eb39f166f13222e",
+        "type": "mqtt out",
+        "z": "94bcde743e287b79",
+        "name": "",
+        "topic": "polimi/iot2023/challenge2/10869169 ",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "621a445fccca02f8",
+        "x": 1030,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "4c890d751258d21b",
+        "type": "counter",
+        "z": "94bcde743e287b79",
+        "name": "",
+        "init": "0",
+        "step": "1",
+        "lower": "",
+        "upper": "",
+        "mode": "increment",
+        "outputs": "1",
+        "x": 480,
+        "y": 140,
+        "wires": [
+            [
+                "a542e7e3692fc281"
+            ]
+        ]
+    },
+    {
+        "id": "a542e7e3692fc281",
+        "type": "switch",
+        "z": "94bcde743e287b79",
+        "name": "",
+        "property": "count",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "100",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 630,
+        "y": 140,
+        "wires": [
+            [
+                "8f0dc5042ec4e866"
+            ],
+            [
+                "abc89f4f2fdb46c7"
+            ]
+        ],
+        "outputLabels": [
+            "true",
+            "false"
+        ]
+    },
+    {
+        "id": "d3e251e711b36f20",
+        "type": "mqtt in",
+        "z": "94bcde743e287b79",
+        "name": "",
+        "topic": "polimi/iot2023/challenge2/10869169 ",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "621a445fccca02f8",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 140,
+        "y": 480,
+        "wires": [
+            [
+                "5fb28d8959261f91",
+                "625577aa830100ea",
+                "aef5fec72fac2786"
+            ]
+        ]
+    },
+    {
+        "id": "5fb28d8959261f91",
+        "type": "function",
+        "z": "94bcde743e287b79",
+        "name": "function 16",
+        "func": "if (msg.payload.payload.includes(\"°C\")) {\n    return msg;\n} else {\n    return null;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 460,
+        "wires": [
+            [
+                "0d1ce479e41f93fe"
+            ]
+        ]
+    },
+    {
+        "id": "0d1ce479e41f93fe",
+        "type": "ui_chart",
+        "z": "94bcde743e287b79",
+        "name": "",
+        "group": "af4dec17750bed25",
+        "order": 11,
+        "width": 0,
+        "height": 0,
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "payload.temperature",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 590,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "625577aa830100ea",
+        "type": "file",
+        "z": "94bcde743e287b79",
+        "name": "",
+        "filename": "C:/Users/Abdul Mannan/Desktop/Fiver_Project4/sheet.csv",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 570,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8f0dc5042ec4e866",
+        "type": "ui_toast",
+        "z": "94bcde743e287b79",
+        "position": "dialog",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "Messages Received",
+        "name": "",
+        "x": 850,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a54d2b6ce93c8f1a",
+        "type": "inject",
+        "z": "94bcde743e287b79",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "100",
+        "payloadType": "num",
+        "x": 490,
+        "y": 100,
+        "wires": [
+            [
+                "8f0dc5042ec4e866"
+            ]
+        ]
+    },
+    {
+        "id": "cda06238a3483737",
+        "type": "change",
+        "z": "94bcde743e287b79",
+        "name": "Message ID from MQTT",
+        "rules": [
+            {
+                "t": "set",
+                "p": "pay",
+                "pt": "msg",
+                "to": "$number(payload.id)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 220,
+        "wires": [
+            [
+                "7b1751438c1f2e17"
+            ]
+        ]
+    },
+    {
+        "id": "0a68254c8787e765",
+        "type": "file in",
+        "z": "94bcde743e287b79",
+        "name": "Read CSV File",
+        "filename": "C:/Users/Abdul Mannan/Desktop/Fiver_Project4/sheet.csv",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 140,
+        "y": 260,
+        "wires": [
+            [
+                "32ad4cb8143fb8b1"
+            ]
+        ]
+    },
+    {
+        "id": "32ad4cb8143fb8b1",
+        "type": "csv",
+        "z": "94bcde743e287b79",
+        "name": "Parse CSV",
+        "sep": ",",
+        "hdrin": true,
+        "hdrout": "all",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": false,
+        "include_null_values": false,
+        "x": 330,
+        "y": 260,
+        "wires": [
+            [
+                "76c4a0504ff68930"
+            ]
+        ]
+    },
+    {
+        "id": "7b1751438c1f2e17",
+        "type": "function",
+        "z": "94bcde743e287b79",
+        "name": "function 17",
+        "func": "let x = msg.pay;\nlet y = msg.payloading;\nif(x==y){\n    msg.payload = msg.payload.messages;\n    return msg;\n}\nelse{\n    return null;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 930,
+        "y": 220,
+        "wires": [
+            [
+                "4678338305947ea0",
+                "fd11fbeca28f050a"
+            ]
+        ]
+    },
+    {
+        "id": "76c4a0504ff68930",
+        "type": "change",
+        "z": "94bcde743e287b79",
+        "name": "Message ID from CSV",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payloading",
+                "pt": "msg",
+                "to": "$number(payload.id)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 340,
+        "y": 340,
+        "wires": [
+            [
+                "4678338305947ea0",
+                "6a64a2e9abab90e6"
+            ]
+        ]
+    },
+    {
+        "id": "6dce143db654d40c",
+        "type": "function",
+        "z": "94bcde743e287b79",
+        "name": "function 18",
+        "func": "// Extract the ID from the received message\nvar id = msg.payload;\n\n// Extract the payload from the CSV file\nvar payload = \"MQTT_PUBLISH_PAYLOAD\"; // Replace this with the actual payload from the CSV file\n\n// Build the new message payload\nvar newPayload = {\n    timestamp: Date.now(),\n    id: id,\n    payload: payload\n};\n\n// Convert the payload to a string\nvar newPayloadStr = JSON.stringify(newPayload);\n\n// Set the new message properties\nmsg.topic = \"polimi/iot2023/challenge2/10869169\";\nmsg.payload = newPayloadStr;\n\n// Return the modified message object\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 440,
+        "wires": [
+            [
+                "9eb39f166f13222e"
+            ]
+        ]
+    },
+    {
+        "id": "fd11fbeca28f050a",
+        "type": "debug",
+        "z": "94bcde743e287b79",
+        "name": "debug 17",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1100,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "6a64a2e9abab90e6",
+        "type": "debug",
+        "z": "94bcde743e287b79",
+        "name": "debug 18",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "aef5fec72fac2786",
+        "type": "debug",
+        "z": "94bcde743e287b79",
+        "name": "debug 19",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 420,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "621a445fccca02f8",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "af4dec17750bed25",
+        "type": "ui_group",
+        "name": "Temperature Chart",
+        "tab": "a933dab0f514deb8",
+        "order": 1,
+        "disp": true,
+        "width": "16",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a933dab0f514deb8",
+        "type": "ui_tab",
+        "name": "Temperature",
+        "icon": "Chart",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]

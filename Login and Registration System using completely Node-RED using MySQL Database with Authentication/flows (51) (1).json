@@ -1,0 +1,2618 @@
+[
+    {
+        "id": "4cfea69aed1ff83c",
+        "type": "tab",
+        "label": "mySQL",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b5c7bce4d982a221",
+        "type": "group",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "808f9051582c4abe",
+            "3e40edcfd2d26f9e",
+            "5da4239f7d9e8fd6",
+            "04d52564cdccf322",
+            "483e6811a0717ec9",
+            "0c56520c8ea1419a",
+            "2512e63799fa2ef2"
+        ],
+        "x": 454,
+        "y": 19,
+        "w": 782,
+        "h": 142
+    },
+    {
+        "id": "836998f30a85615b",
+        "type": "group",
+        "z": "4cfea69aed1ff83c",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "c95353d2be4e3dd4",
+            "95573efc9a8c410b",
+            "1e9a9d28fdf8f901",
+            "9530a488.1a4c78",
+            "318f0fbe0e0c8e82",
+            "aa420835ae1573a8",
+            "70c689a5f43a15d3",
+            "1683213863445b31",
+            "20c1d6836843c75c",
+            "5d2b74a1b36da991",
+            "970a95f476390da7",
+            "803bbb21b799f011",
+            "8c1faeb27471c0a7",
+            "48dee0112f12627c",
+            "debbcc35679c5c37",
+            "4d1ba297a5aa5394",
+            "4ceac3fd01c8643f",
+            "743b048a824561a5",
+            "071c173cbd2ff5dc",
+            "bb8ffcc4cb8f9bbf",
+            "605bffe99bd1ec31",
+            "129d0b6b67150350",
+            "b53ce38428d47ff0",
+            "250ae2027293cb92"
+        ],
+        "x": 2114,
+        "y": 59,
+        "w": 1232,
+        "h": 562
+    },
+    {
+        "id": "77bb4baf8b340de3",
+        "type": "group",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "834be1987cbc6743",
+            "3b9493bca3f0b362",
+            "730f8a9cc8176a62",
+            "113886ba1371519a",
+            "867ee4374a7dd51a",
+            "0c5fcc87bbbd8650"
+        ],
+        "x": 574,
+        "y": 1219,
+        "w": 812,
+        "h": 122
+    },
+    {
+        "id": "e196e5be30681415",
+        "type": "mysql",
+        "z": "4cfea69aed1ff83c",
+        "mydb": "74da666bb0845b6c",
+        "name": "",
+        "x": 1110,
+        "y": 980,
+        "wires": [
+            [
+                "42f8d8adcffdf587"
+            ]
+        ]
+    },
+    {
+        "id": "2337763c27f9b644",
+        "type": "ui_table",
+        "z": "4cfea69aed1ff83c",
+        "group": "e5ad3801527d9f14",
+        "name": "",
+        "order": 3,
+        "width": "0",
+        "height": "0",
+        "columns": [
+            {
+                "field": "p_Id",
+                "title": "Number",
+                "width": "10px",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "username",
+                "title": "Username",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "password",
+                "title": "Password",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            }
+        ],
+        "outputs": 0,
+        "cts": false,
+        "x": 1690,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "7add34a013a7811d",
+        "type": "function",
+        "z": "4cfea69aed1ff83c",
+        "name": "assign",
+        "func": "var tableData = flow.get(\"g\") || []; \ntableData.unshift(msg.payload = {\n    \"username\": msg.payload.username,\n    \"password\": msg.payload.password,\n    \"p_Id\": msg.payload.p_Id\n});\n\nmsg.payload =tableData;\nflow.set(\"g\",tableData);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1410,
+        "y": 980,
+        "wires": [
+            [
+                "2337763c27f9b644"
+            ]
+        ]
+    },
+    {
+        "id": "56605e072265e705",
+        "type": "ui_text_input",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "label": "Type Username to Delete",
+        "tooltip": "",
+        "group": "e5ad3801527d9f14",
+        "order": 2,
+        "width": 12,
+        "height": 1,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 470,
+        "y": 880,
+        "wires": [
+            [
+                "cc5c6ec576632771"
+            ]
+        ]
+    },
+    {
+        "id": "cc5c6ec576632771",
+        "type": "function",
+        "z": "4cfea69aed1ff83c",
+        "name": "function 114",
+        "func": "var dynamic = msg.payload;\n\nmsg.topic = `DELETE FROM reg WHERE username = '${dynamic}';`;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 880,
+        "wires": [
+            [
+                "e196e5be30681415"
+            ]
+        ]
+    },
+    {
+        "id": "42f8d8adcffdf587",
+        "type": "function",
+        "z": "4cfea69aed1ff83c",
+        "name": "loop",
+        "func": "var msgList = []; \nvar letterList =  msg.payload;\nfor(var i = 0; i < 5; i++) \n{\n    msgList.push({ payload: letterList[i]})\n\n} \n\nreturn [msgList]",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1270,
+        "y": 960,
+        "wires": [
+            [
+                "7add34a013a7811d",
+                "1471a51e4615da42"
+            ]
+        ]
+    },
+    {
+        "id": "922b2c07996bcdaa",
+        "type": "function",
+        "z": "4cfea69aed1ff83c",
+        "name": "Sign Up To Table",
+        "func": "var x = msg.payload.username;\nvar y = msg.payload.password;\n\n\nmsg.payload = [x,y]; \nmsg.topic = 'INSERT INTO reg(username, password) VALUES(?,?);';\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 1020,
+        "wires": [
+            [
+                "e196e5be30681415"
+            ]
+        ]
+    },
+    {
+        "id": "c88bc1ef630bef28",
+        "type": "ui_button",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "group": "e5ad3801527d9f14",
+        "order": 6,
+        "width": 12,
+        "height": 1,
+        "passthru": true,
+        "label": "Update Table",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "date",
+        "topic": "SELECT * FROM reg;",
+        "topicType": "str",
+        "x": 830,
+        "y": 1060,
+        "wires": [
+            [
+                "44de0d1984e339a2",
+                "e196e5be30681415"
+            ]
+        ]
+    },
+    {
+        "id": "4e269f61953dd534",
+        "type": "ui_button",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "group": "e5ad3801527d9f14",
+        "order": 5,
+        "width": 12,
+        "height": 1,
+        "passthru": false,
+        "label": "Delete User",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "date",
+        "topic": "DELETE FROM reg;",
+        "topicType": "str",
+        "x": 830,
+        "y": 980,
+        "wires": [
+            [
+                "e196e5be30681415"
+            ]
+        ]
+    },
+    {
+        "id": "44de0d1984e339a2",
+        "type": "ui_button",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "group": "e5ad3801527d9f14",
+        "order": 4,
+        "width": 12,
+        "height": 1,
+        "passthru": true,
+        "label": "Clear Table",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "[]",
+        "payloadType": "json",
+        "topic": "",
+        "topicType": "str",
+        "x": 1270,
+        "y": 1020,
+        "wires": [
+            [
+                "2337763c27f9b644",
+                "7add34a013a7811d",
+                "113b0df458fe2af7"
+            ]
+        ]
+    },
+    {
+        "id": "113b0df458fe2af7",
+        "type": "change",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "g",
+                "pt": "flow",
+                "to": "",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1460,
+        "y": 1060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "663759f9129bcb05",
+        "type": "function",
+        "z": "4cfea69aed1ff83c",
+        "name": "Store",
+        "func": "flow.set(\"login\", msg.payload);",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 1160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "53f46e6110fda1fc",
+        "type": "ui_form",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "label": "Sign Up (User)",
+        "group": "6ed7185bb6a11c7b",
+        "order": 1,
+        "width": 6,
+        "height": 1,
+        "options": [
+            {
+                "label": "User Name",
+                "value": "username",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Password",
+                "value": "password",
+                "type": "password",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "username": "",
+            "password": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
+        "x": 580,
+        "y": 1040,
+        "wires": [
+            [
+                "922b2c07996bcdaa"
+            ]
+        ]
+    },
+    {
+        "id": "1471a51e4615da42",
+        "type": "function",
+        "z": "4cfea69aed1ff83c",
+        "name": "function 90",
+        "func": "let x = flow.get(\"login\");\n\nif (msg.payload.username == x.usernam && msg.payload.password == x.passwor){\n    msg.payload = \"Login Successful\"\n    \n}\nelse{\n    msg.payload = \"Login Failed\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1430,
+        "y": 940,
+        "wires": [
+            [
+                "d56c3fd443dde342"
+            ]
+        ]
+    },
+    {
+        "id": "d56c3fd443dde342",
+        "type": "switch",
+        "z": "4cfea69aed1ff83c",
+        "name": "Login Successful",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Login Successful",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Login Failed",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1730,
+        "y": 940,
+        "wires": [
+            [
+                "06a3faee18a6d0ea",
+                "8a23e269d46d271e",
+                "ddf10a824e3da34b",
+                "05cb80614e902aa7"
+            ],
+            [
+                "06a3faee18a6d0ea"
+            ]
+        ]
+    },
+    {
+        "id": "06a3faee18a6d0ea",
+        "type": "ui_toast",
+        "z": "4cfea69aed1ff83c",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 1970,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "5aa275bdaa37ab31",
+        "type": "ui_chart",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "group": "a319f4a42d381ae4",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 2010,
+        "y": 1000,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2aff8b8ba171bc2f",
+        "type": "inject",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1.5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 2170,
+        "y": 840,
+        "wires": [
+            [
+                "5aa275bdaa37ab31"
+            ]
+        ]
+    },
+    {
+        "id": "22178b0637fe0f73",
+        "type": "inject",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "2.1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 2170,
+        "y": 880,
+        "wires": [
+            [
+                "5aa275bdaa37ab31"
+            ]
+        ]
+    },
+    {
+        "id": "8a23e269d46d271e",
+        "type": "debug",
+        "z": "4cfea69aed1ff83c",
+        "name": "debug 132",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1970,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "ddf10a824e3da34b",
+        "type": "change",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"show\":[\"User_User\"],\"hide\":[\"User_LoginUser\",\"User_SignupUser\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2000,
+        "y": 920,
+        "wires": [
+            [
+                "5da512b6fa0faa92"
+            ]
+        ]
+    },
+    {
+        "id": "5da512b6fa0faa92",
+        "type": "ui_ui_control",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "events": "all",
+        "x": 2180,
+        "y": 920,
+        "wires": [
+            [
+                "5aa275bdaa37ab31"
+            ]
+        ]
+    },
+    {
+        "id": "477d5241759fac02",
+        "type": "mysql",
+        "z": "4cfea69aed1ff83c",
+        "mydb": "ede5f337f83f5a9b",
+        "name": "",
+        "x": 1030,
+        "y": 440,
+        "wires": [
+            [
+                "216dc0420daf1770"
+            ]
+        ]
+    },
+    {
+        "id": "85c9a0839b11dfaf",
+        "type": "ui_text_input",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "label": "Type Admin Username to Delete",
+        "tooltip": "",
+        "group": "028061c87ac500af",
+        "order": 2,
+        "width": 12,
+        "height": 1,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 610,
+        "y": 440,
+        "wires": [
+            [
+                "3d36e155f25d1837"
+            ]
+        ]
+    },
+    {
+        "id": "3d36e155f25d1837",
+        "type": "function",
+        "z": "4cfea69aed1ff83c",
+        "name": "function 118",
+        "func": "var dynamicValue = msg.payload;\n\nmsg.topic = `DELETE FROM adm WHERE username = '${dynamicValue}';`;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 440,
+        "wires": [
+            [
+                "477d5241759fac02"
+            ]
+        ]
+    },
+    {
+        "id": "a19460aa81d948be",
+        "type": "ui_button",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "group": "028061c87ac500af",
+        "order": 5,
+        "width": 12,
+        "height": 1,
+        "passthru": false,
+        "label": "Delete Admin",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "date",
+        "topic": "DELETE FROM adm;",
+        "topicType": "str",
+        "x": 850,
+        "y": 480,
+        "wires": [
+            [
+                "477d5241759fac02"
+            ]
+        ]
+    },
+    {
+        "id": "216dc0420daf1770",
+        "type": "function",
+        "z": "4cfea69aed1ff83c",
+        "name": "loop",
+        "func": "var msgList = []; \nvar letterList =  msg.payload;\nfor(var i = 0; i < 5; i++) \n{\n    msgList.push({ payload: letterList[i]})\n\n} \nflow.set(\"sset\", msgList)\nreturn [msgList]",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1170,
+        "y": 440,
+        "wires": [
+            [
+                "e901e38475ba2aa4"
+            ]
+        ]
+    },
+    {
+        "id": "6a4dca31e9260ac0",
+        "type": "ui_table",
+        "z": "4cfea69aed1ff83c",
+        "group": "028061c87ac500af",
+        "name": "Admin Table",
+        "order": 3,
+        "width": "0",
+        "height": "0",
+        "columns": [
+            {
+                "field": "p_Id",
+                "title": "Number",
+                "width": "10px",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "username",
+                "title": "Username (Admin)",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "password",
+                "title": "Password(Admin)",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            }
+        ],
+        "outputs": 0,
+        "cts": false,
+        "x": 1450,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "1153bbb1e107c13d",
+        "type": "function",
+        "z": "4cfea69aed1ff83c",
+        "name": "function 119",
+        "func": "var x = msg.payload.username;\nvar y = msg.payload.password;\n\n\nmsg.payload = [x,y]; \nmsg.topic = 'INSERT INTO adm(username, password) VALUES(?,?);';\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 400,
+        "wires": [
+            [
+                "477d5241759fac02",
+                "e481b3f79fabb0bf"
+            ]
+        ]
+    },
+    {
+        "id": "a460a69120369203",
+        "type": "ui_form",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "label": "Login",
+        "group": "7f9828027fc79af1",
+        "order": 1,
+        "width": 6,
+        "height": 1,
+        "options": [
+            {
+                "label": "User Name",
+                "value": "usernam",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Password",
+                "value": "passwor",
+                "type": "password",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "usernam": "",
+            "passwor": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
+        "x": 690,
+        "y": 560,
+        "wires": [
+            [
+                "4a13656c550d4f20",
+                "82eff8e0b1ce013d",
+                "2c6a20072521abb6"
+            ]
+        ]
+    },
+    {
+        "id": "4a13656c550d4f20",
+        "type": "function",
+        "z": "4cfea69aed1ff83c",
+        "name": "Store",
+        "func": "flow.set(\"loginAdmin\", msg.payload);",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "24ab4da077304da9",
+        "type": "ui_form",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "label": "Sign Up",
+        "group": "522366603eed3000",
+        "order": 1,
+        "width": 6,
+        "height": 1,
+        "options": [
+            {
+                "label": "User Name",
+                "value": "username",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Password",
+                "value": "password",
+                "type": "password",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "username": "",
+            "password": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
+        "x": 680,
+        "y": 380,
+        "wires": [
+            [
+                "1153bbb1e107c13d"
+            ]
+        ]
+    },
+    {
+        "id": "e901e38475ba2aa4",
+        "type": "function",
+        "z": "4cfea69aed1ff83c",
+        "name": "Success Vs Failure",
+        "func": "let x = flow.get(\"loginAdmin\");\nif (msg.payload.username == x.usernam && msg.payload.username == x.passwor)\n{\n    msg.payload = \"Login Successful\"\n    return msg;\n}\nelse{\n    msg.payload = \"Login Failed\"\n    return msg;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1390,
+        "y": 140,
+        "wires": [
+            [
+                "c95353d2be4e3dd4"
+            ]
+        ]
+    },
+    {
+        "id": "c95353d2be4e3dd4",
+        "type": "switch",
+        "z": "4cfea69aed1ff83c",
+        "g": "836998f30a85615b",
+        "name": "Login Successful",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Login Successful",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Login Failed",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2230,
+        "y": 140,
+        "wires": [
+            [
+                "4d1ba297a5aa5394"
+            ],
+            [
+                "debbcc35679c5c37"
+            ]
+        ]
+    },
+    {
+        "id": "95573efc9a8c410b",
+        "type": "change",
+        "z": "4cfea69aed1ff83c",
+        "g": "836998f30a85615b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"hide\":[\"Admin_AdminSignup\",\"Admin_AdminLogin\"],\"show\":[\"Admin_DataUser\",\"Admin_DataAdmin\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2600,
+        "y": 320,
+        "wires": [
+            [
+                "1e9a9d28fdf8f901"
+            ]
+        ]
+    },
+    {
+        "id": "2512e63799fa2ef2",
+        "type": "ui_button",
+        "z": "4cfea69aed1ff83c",
+        "g": "b5c7bce4d982a221",
+        "name": "",
+        "group": "7f9828027fc79af1",
+        "order": 2,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "Signup",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "login",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 540,
+        "y": 60,
+        "wires": [
+            [
+                "808f9051582c4abe"
+            ]
+        ]
+    },
+    {
+        "id": "0c56520c8ea1419a",
+        "type": "ui_button",
+        "z": "4cfea69aed1ff83c",
+        "g": "b5c7bce4d982a221",
+        "name": "",
+        "group": "522366603eed3000",
+        "order": 2,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "Login",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "signup",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 530,
+        "y": 120,
+        "wires": [
+            [
+                "808f9051582c4abe"
+            ]
+        ]
+    },
+    {
+        "id": "808f9051582c4abe",
+        "type": "switch",
+        "z": "4cfea69aed1ff83c",
+        "g": "b5c7bce4d982a221",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "login",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "signup",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "signupAdmin",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 710,
+        "y": 80,
+        "wires": [
+            [
+                "3e40edcfd2d26f9e"
+            ],
+            [
+                "5da4239f7d9e8fd6"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "3e40edcfd2d26f9e",
+        "type": "change",
+        "z": "4cfea69aed1ff83c",
+        "g": "b5c7bce4d982a221",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"show\":[\"Admin_AdminSignup\"],\"hide\":[\"Admin_AdminLogin\",\"Admin_DataUser\",\"Admin_DataAdmin\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 60,
+        "wires": [
+            [
+                "04d52564cdccf322"
+            ]
+        ]
+    },
+    {
+        "id": "5da4239f7d9e8fd6",
+        "type": "change",
+        "z": "4cfea69aed1ff83c",
+        "g": "b5c7bce4d982a221",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"show\":[\"Admin_AdminLogin\"],\"hide\":[\"Admin_AdminSignup\",\"Admin_DataUser\",\"Admin_DataAdmin\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 100,
+        "wires": [
+            [
+                "04d52564cdccf322"
+            ]
+        ]
+    },
+    {
+        "id": "04d52564cdccf322",
+        "type": "ui_ui_control",
+        "z": "4cfea69aed1ff83c",
+        "g": "b5c7bce4d982a221",
+        "name": "",
+        "events": "all",
+        "x": 1100,
+        "y": 80,
+        "wires": [
+            [
+                "483e6811a0717ec9"
+            ]
+        ]
+    },
+    {
+        "id": "1e9a9d28fdf8f901",
+        "type": "ui_ui_control",
+        "z": "4cfea69aed1ff83c",
+        "g": "836998f30a85615b",
+        "name": "",
+        "events": "all",
+        "x": 2780,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "82eff8e0b1ce013d",
+        "type": "ui_button",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "group": "028061c87ac500af",
+        "order": 6,
+        "width": 12,
+        "height": 1,
+        "passthru": true,
+        "label": "Update Table (Admin)",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "date",
+        "topic": "SELECT * FROM adm;",
+        "topicType": "str",
+        "x": 900,
+        "y": 640,
+        "wires": [
+            [
+                "6b66e9f6af47d498",
+                "c4153b7640bb6b19"
+            ]
+        ]
+    },
+    {
+        "id": "6b66e9f6af47d498",
+        "type": "ui_button",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "group": "028061c87ac500af",
+        "order": 4,
+        "width": 12,
+        "height": 1,
+        "passthru": true,
+        "label": "Clear Table",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "[]",
+        "payloadType": "json",
+        "topic": "",
+        "topicType": "str",
+        "x": 1110,
+        "y": 580,
+        "wires": [
+            [
+                "36eece3f4e49f93b",
+                "6a4dca31e9260ac0"
+            ]
+        ]
+    },
+    {
+        "id": "36eece3f4e49f93b",
+        "type": "change",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "admin",
+                "pt": "flow",
+                "to": "",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1440,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "483e6811a0717ec9",
+        "type": "link out",
+        "z": "4cfea69aed1ff83c",
+        "g": "b5c7bce4d982a221",
+        "name": "link out 60",
+        "mode": "link",
+        "links": [
+            "af2bf0777a1f6256",
+            "e74f0d560cda7340"
+        ],
+        "x": 1195,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "e74f0d560cda7340",
+        "type": "link in",
+        "z": "4cfea69aed1ff83c",
+        "name": "link in 47",
+        "links": [
+            "483e6811a0717ec9"
+        ],
+        "x": 525,
+        "y": 380,
+        "wires": [
+            [
+                "24ab4da077304da9"
+            ]
+        ]
+    },
+    {
+        "id": "af2bf0777a1f6256",
+        "type": "link in",
+        "z": "4cfea69aed1ff83c",
+        "name": "link in 48",
+        "links": [
+            "483e6811a0717ec9"
+        ],
+        "x": 585,
+        "y": 560,
+        "wires": [
+            [
+                "a460a69120369203"
+            ]
+        ]
+    },
+    {
+        "id": "59672c21abd30129",
+        "type": "inject",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 620,
+        "y": 640,
+        "wires": [
+            [
+                "82eff8e0b1ce013d"
+            ]
+        ]
+    },
+    {
+        "id": "b4d4f1421a4f3671",
+        "type": "change",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"hide\":[\"Admin_DataAdmin\",\"Admin_AdminSignup\",\"Admin_DataUser\"],\"show\":[\"Admin_AdminLogin\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1600,
+        "y": 620,
+        "wires": [
+            [
+                "45a5eb1df2acda34"
+            ]
+        ]
+    },
+    {
+        "id": "45a5eb1df2acda34",
+        "type": "ui_ui_control",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "events": "all",
+        "x": 1800,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a9db2c86207494ae",
+        "type": "ui_button",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "group": "e5ad3801527d9f14",
+        "order": 7,
+        "width": 12,
+        "height": 1,
+        "passthru": false,
+        "label": "Log Out",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "Log Out",
+        "topicType": "str",
+        "x": 1400,
+        "y": 600,
+        "wires": [
+            [
+                "b4d4f1421a4f3671"
+            ]
+        ]
+    },
+    {
+        "id": "7529e35b19f4be21",
+        "type": "ui_form",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "label": "Add User",
+        "group": "e5ad3801527d9f14",
+        "order": 1,
+        "width": 12,
+        "height": 3,
+        "options": [
+            {
+                "label": "User Name",
+                "value": "username",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Password",
+                "value": "password",
+                "type": "password",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "username": "",
+            "password": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
+        "x": 600,
+        "y": 1000,
+        "wires": [
+            [
+                "922b2c07996bcdaa"
+            ]
+        ]
+    },
+    {
+        "id": "a53f358e04528275",
+        "type": "ui_form",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "label": "Login (User)",
+        "group": "8fc522eecde8b13b",
+        "order": 1,
+        "width": 6,
+        "height": 1,
+        "options": [
+            {
+                "label": "User Name",
+                "value": "usernam",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Password",
+                "value": "passwor",
+                "type": "password",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "usernam": "",
+            "passwor": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
+        "x": 590,
+        "y": 1080,
+        "wires": [
+            [
+                "663759f9129bcb05",
+                "c88bc1ef630bef28"
+            ]
+        ]
+    },
+    {
+        "id": "05cb80614e902aa7",
+        "type": "debug",
+        "z": "4cfea69aed1ff83c",
+        "name": "debug 158",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1990,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "a93412b7bb456823",
+        "type": "change",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"hide\":[\"User_User\"],\"show\":[\"User_LoginUser\",\"User_SignupUser\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2040,
+        "y": 1100,
+        "wires": [
+            [
+                "0999cc519adae483"
+            ]
+        ]
+    },
+    {
+        "id": "0999cc519adae483",
+        "type": "ui_ui_control",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "events": "all",
+        "x": 2240,
+        "y": 1080,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "712a7712aaf5c56f",
+        "type": "ui_button",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "group": "a319f4a42d381ae4",
+        "order": 7,
+        "width": "0",
+        "height": "0",
+        "passthru": false,
+        "label": "Log Out",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "Log Out",
+        "topicType": "str",
+        "x": 1840,
+        "y": 1080,
+        "wires": [
+            [
+                "a93412b7bb456823"
+            ]
+        ]
+    },
+    {
+        "id": "9530a488.1a4c78",
+        "type": "delay",
+        "z": "4cfea69aed1ff83c",
+        "g": "836998f30a85615b",
+        "name": "1 Second Delay",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "2",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 2360,
+        "y": 380,
+        "wires": [
+            [
+                "743b048a824561a5"
+            ]
+        ]
+    },
+    {
+        "id": "318f0fbe0e0c8e82",
+        "type": "function",
+        "z": "4cfea69aed1ff83c",
+        "g": "836998f30a85615b",
+        "name": "function 123",
+        "func": "// Check if the counter is already initialized\nif (flow.get(\"counter\") === undefined) {\n    // If not initialized, set it to 0\n    flow.set(\"counter\", 0);\n}\n\n// Get the current value of the counter\nlet counterValue = flow.get(\"counter\");\n\n// Increment the counter\ncounterValue++;\n\n// Log the current counter value\nconsole.log(\"Counter Value:\", counterValue);\n\n// Update the counter in the flow context\nflow.set(\"counter\", counterValue);\n\n// Now you can use the updated counterValue for further processing\nmsg.payload = counterValue;\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2590,
+        "y": 440,
+        "wires": [
+            [
+                "aa420835ae1573a8"
+            ]
+        ]
+    },
+    {
+        "id": "aa420835ae1573a8",
+        "type": "switch",
+        "z": "4cfea69aed1ff83c",
+        "g": "836998f30a85615b",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 2730,
+        "y": 440,
+        "wires": [
+            [
+                "20c1d6836843c75c",
+                "8c1faeb27471c0a7"
+            ],
+            [
+                "48dee0112f12627c"
+            ],
+            [
+                "48dee0112f12627c"
+            ]
+        ]
+    },
+    {
+        "id": "70c689a5f43a15d3",
+        "type": "inject",
+        "z": "4cfea69aed1ff83c",
+        "g": "836998f30a85615b",
+        "name": "Reset",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 2970,
+        "y": 400,
+        "wires": [
+            [
+                "1683213863445b31"
+            ]
+        ]
+    },
+    {
+        "id": "1683213863445b31",
+        "type": "change",
+        "z": "4cfea69aed1ff83c",
+        "g": "836998f30a85615b",
+        "name": "Reset Counter",
+        "rules": [
+            {
+                "t": "set",
+                "p": "counter",
+                "pt": "flow",
+                "to": "",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 3220,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "20c1d6836843c75c",
+        "type": "change",
+        "z": "4cfea69aed1ff83c",
+        "g": "836998f30a85615b",
+        "name": "HIDE ALL",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"show\":[],\"hide\":[\"Admin_AdminSignup\",\"Admin_DataUser\",\"Admin_AdminLogin\",\"Admin_DataAdmin\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2980,
+        "y": 360,
+        "wires": [
+            [
+                "5d2b74a1b36da991"
+            ]
+        ]
+    },
+    {
+        "id": "5d2b74a1b36da991",
+        "type": "ui_ui_control",
+        "z": "4cfea69aed1ff83c",
+        "g": "836998f30a85615b",
+        "name": "",
+        "events": "all",
+        "x": 3180,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "970a95f476390da7",
+        "type": "change",
+        "z": "4cfea69aed1ff83c",
+        "g": "836998f30a85615b",
+        "name": "Show All",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"show\":[\"Admin_AdminSignup\",\"Admin_DataUser\",\"Admin_AdminLogin\",\"Admin_DataAdmin\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2980,
+        "y": 320,
+        "wires": [
+            [
+                "5d2b74a1b36da991"
+            ]
+        ]
+    },
+    {
+        "id": "803bbb21b799f011",
+        "type": "inject",
+        "z": "4cfea69aed1ff83c",
+        "g": "836998f30a85615b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 2980,
+        "y": 280,
+        "wires": [
+            [
+                "970a95f476390da7"
+            ]
+        ]
+    },
+    {
+        "id": "8c1faeb27471c0a7",
+        "type": "ui_toast",
+        "z": "4cfea69aed1ff83c",
+        "g": "836998f30a85615b",
+        "position": "dialog",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "Cancel",
+        "raw": false,
+        "className": "",
+        "topic": "Session Expired (Wanna Retry?)",
+        "name": "Login Attempts Exceed",
+        "x": 2940,
+        "y": 440,
+        "wires": [
+            [
+                "1683213863445b31",
+                "b53ce38428d47ff0",
+                "071c173cbd2ff5dc"
+            ]
+        ]
+    },
+    {
+        "id": "48dee0112f12627c",
+        "type": "ui_toast",
+        "z": "4cfea69aed1ff83c",
+        "g": "836998f30a85615b",
+        "position": "dialog",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "Incorrect Login Attempt",
+        "name": "",
+        "x": 2970,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "debbcc35679c5c37",
+        "type": "delay",
+        "z": "4cfea69aed1ff83c",
+        "g": "836998f30a85615b",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "5",
+        "nbRateUnits": "2",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 2340,
+        "y": 300,
+        "wires": [
+            [
+                "4d1ba297a5aa5394"
+            ]
+        ]
+    },
+    {
+        "id": "4d1ba297a5aa5394",
+        "type": "function",
+        "z": "4cfea69aed1ff83c",
+        "g": "836998f30a85615b",
+        "name": "function 124",
+        "func": "if (msg.payload == \"Login Successful\") {\n\n    flow.set(\"one\", msg.payload);\n}\n\n\nelse if (flow.get(\"one\") == \"Login Successful\") {\n\n    msg.payload = \"Login Successful\";  \n    return msg;\n}\nelse if (msg.payload = \"Login Failed\") {\n\n    msg.payload = \"Login Failed\";\n    return msg;\n}\n/*if(msg.payload == \"Login Successfully\"){\n    \n    flow.set(\"one\",msg.payload);\n}\nelse if (flow.get(\"one\") == \"Login Successfully\") {\n\n    return msg;\n}\nelse if (msg.payload == \"Login Failed\") {\n\n    return msg;\n}*/",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2350,
+        "y": 340,
+        "wires": [
+            [
+                "9530a488.1a4c78"
+            ]
+        ]
+    },
+    {
+        "id": "d06a15adaf6d2047",
+        "type": "inject",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "2",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1470,
+        "y": 400,
+        "wires": [
+            [
+                "f6f5d374f9ed40fd"
+            ]
+        ]
+    },
+    {
+        "id": "f6f5d374f9ed40fd",
+        "type": "change",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "one",
+                "pt": "flow",
+                "to": "",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1490,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4ceac3fd01c8643f",
+        "type": "comment",
+        "z": "4cfea69aed1ff83c",
+        "g": "836998f30a85615b",
+        "name": "Brute Force Attack",
+        "info": "",
+        "x": 2250,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "743b048a824561a5",
+        "type": "switch",
+        "z": "4cfea69aed1ff83c",
+        "g": "836998f30a85615b",
+        "name": "Login Successful",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Login Successful",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Login Failed",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2570,
+        "y": 380,
+        "wires": [
+            [
+                "95573efc9a8c410b",
+                "1683213863445b31"
+            ],
+            [
+                "318f0fbe0e0c8e82"
+            ]
+        ]
+    },
+    {
+        "id": "e481b3f79fabb0bf",
+        "type": "debug",
+        "z": "4cfea69aed1ff83c",
+        "name": "debug 159",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1030,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "17cf4ac8fc043392",
+        "type": "ui_form",
+        "z": "4cfea69aed1ff83c",
+        "name": "",
+        "label": "Add Admin",
+        "group": "028061c87ac500af",
+        "order": 1,
+        "width": 6,
+        "height": 1,
+        "options": [
+            {
+                "label": "User Name",
+                "value": "username",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Password",
+                "value": "password",
+                "type": "password",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "username": "",
+            "password": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
+        "x": 690,
+        "y": 340,
+        "wires": [
+            [
+                "1153bbb1e107c13d"
+            ]
+        ]
+    },
+    {
+        "id": "c4153b7640bb6b19",
+        "type": "mysql",
+        "z": "4cfea69aed1ff83c",
+        "mydb": "ede5f337f83f5a9b",
+        "name": "",
+        "x": 1090,
+        "y": 640,
+        "wires": [
+            [
+                "1e7195f17fab9a79"
+            ]
+        ]
+    },
+    {
+        "id": "2c6a20072521abb6",
+        "type": "function",
+        "z": "4cfea69aed1ff83c",
+        "name": "Process",
+        "func": "msg.topic = `SELECT * FROM adm;`\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 560,
+        "wires": [
+            [
+                "477d5241759fac02"
+            ]
+        ]
+    },
+    {
+        "id": "1e7195f17fab9a79",
+        "type": "function",
+        "z": "4cfea69aed1ff83c",
+        "name": "loop",
+        "func": "var msgList = []; \nvar letterList =  msg.payload;\nfor(var i = 0; i < 5; i++) \n{\n    msgList.push({ payload: letterList[i]})\n\n} \nflow.set(\"sset\", msgList)\nreturn [msgList]",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1230,
+        "y": 640,
+        "wires": [
+            [
+                "7d9d1d60badbc17e"
+            ]
+        ]
+    },
+    {
+        "id": "7d9d1d60badbc17e",
+        "type": "function",
+        "z": "4cfea69aed1ff83c",
+        "name": "assign",
+        "func": "var tableData = flow.get(\"admin\") || []; \ntableData.unshift(msg.payload = {\n    \"username\": msg.payload.username,\n    \"password\": msg.payload.password,\n    \"p_Id\": msg.payload.p_Id\n});\n\nmsg.payload =tableData;\nflow.set(\"admin\",tableData);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1230,
+        "y": 600,
+        "wires": [
+            [
+                "6a4dca31e9260ac0"
+            ]
+        ]
+    },
+    {
+        "id": "605bffe99bd1ec31",
+        "type": "change",
+        "z": "4cfea69aed1ff83c",
+        "g": "836998f30a85615b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"show\":[\"Admin_AdminLogin\"],\"hide\":[\"Admin_AdminSignup\",\"Admin_DataUser\",\"Admin_DataAdmin\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2840,
+        "y": 580,
+        "wires": [
+            [
+                "bb8ffcc4cb8f9bbf"
+            ]
+        ]
+    },
+    {
+        "id": "bb8ffcc4cb8f9bbf",
+        "type": "ui_ui_control",
+        "z": "4cfea69aed1ff83c",
+        "g": "836998f30a85615b",
+        "name": "",
+        "events": "all",
+        "x": 3020,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "129d0b6b67150350",
+        "type": "inject",
+        "z": "4cfea69aed1ff83c",
+        "g": "836998f30a85615b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 2650,
+        "y": 580,
+        "wires": [
+            [
+                "605bffe99bd1ec31"
+            ]
+        ]
+    },
+    {
+        "id": "b53ce38428d47ff0",
+        "type": "debug",
+        "z": "4cfea69aed1ff83c",
+        "g": "836998f30a85615b",
+        "name": "debug 160",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 3230,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "071c173cbd2ff5dc",
+        "type": "switch",
+        "z": "4cfea69aed1ff83c",
+        "g": "836998f30a85615b",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "OK",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Cancel",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2990,
+        "y": 520,
+        "wires": [
+            [
+                "605bffe99bd1ec31"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "250ae2027293cb92",
+        "type": "inject",
+        "z": "4cfea69aed1ff83c",
+        "g": "836998f30a85615b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 2720,
+        "y": 500,
+        "wires": [
+            [
+                "605bffe99bd1ec31"
+            ]
+        ]
+    },
+    {
+        "id": "834be1987cbc6743",
+        "type": "switch",
+        "z": "4cfea69aed1ff83c",
+        "g": "77bb4baf8b340de3",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "login",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "signup",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "signupAdmin",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 890,
+        "y": 1280,
+        "wires": [
+            [
+                "730f8a9cc8176a62"
+            ],
+            [
+                "3b9493bca3f0b362"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "3b9493bca3f0b362",
+        "type": "change",
+        "z": "4cfea69aed1ff83c",
+        "g": "77bb4baf8b340de3",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"show\":[\"User_SignupUser\"],\"hide\":[\"User_User\",\"User_LoginUser\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1080,
+        "y": 1260,
+        "wires": [
+            [
+                "113886ba1371519a"
+            ]
+        ]
+    },
+    {
+        "id": "730f8a9cc8176a62",
+        "type": "change",
+        "z": "4cfea69aed1ff83c",
+        "g": "77bb4baf8b340de3",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"show\":[\"User_LoginUser\"],\"hide\":[\"User_User\",\"User_SignupUser\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1080,
+        "y": 1300,
+        "wires": [
+            [
+                "113886ba1371519a"
+            ]
+        ]
+    },
+    {
+        "id": "113886ba1371519a",
+        "type": "ui_ui_control",
+        "z": "4cfea69aed1ff83c",
+        "g": "77bb4baf8b340de3",
+        "name": "",
+        "events": "all",
+        "x": 1300,
+        "y": 1280,
+        "wires": [
+            [
+                "53f46e6110fda1fc",
+                "a53f358e04528275"
+            ]
+        ]
+    },
+    {
+        "id": "867ee4374a7dd51a",
+        "type": "ui_button",
+        "z": "4cfea69aed1ff83c",
+        "g": "77bb4baf8b340de3",
+        "name": "",
+        "group": "8fc522eecde8b13b",
+        "order": 2,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "Signup (User)",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "signup",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 680,
+        "y": 1300,
+        "wires": [
+            [
+                "834be1987cbc6743"
+            ]
+        ]
+    },
+    {
+        "id": "0c5fcc87bbbd8650",
+        "type": "ui_button",
+        "z": "4cfea69aed1ff83c",
+        "g": "77bb4baf8b340de3",
+        "name": "",
+        "group": "6ed7185bb6a11c7b",
+        "order": 2,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "login (User)",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "login",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 670,
+        "y": 1260,
+        "wires": [
+            [
+                "834be1987cbc6743"
+            ]
+        ]
+    },
+    {
+        "id": "74da666bb0845b6c",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "test",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "e5ad3801527d9f14",
+        "type": "ui_group",
+        "name": "DataUser",
+        "tab": "481fa8bb3da04866",
+        "order": 4,
+        "disp": true,
+        "width": 12,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "6ed7185bb6a11c7b",
+        "type": "ui_group",
+        "name": "SignupUser",
+        "tab": "667c72804dc6e7d4",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a319f4a42d381ae4",
+        "type": "ui_group",
+        "name": "User",
+        "tab": "667c72804dc6e7d4",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "ede5f337f83f5a9b",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "Manan",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "028061c87ac500af",
+        "type": "ui_group",
+        "name": "DataAdmin",
+        "tab": "481fa8bb3da04866",
+        "order": 3,
+        "disp": true,
+        "width": 12,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7f9828027fc79af1",
+        "type": "ui_group",
+        "name": "AdminLogin",
+        "tab": "481fa8bb3da04866",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "522366603eed3000",
+        "type": "ui_group",
+        "name": "AdminSignup",
+        "tab": "481fa8bb3da04866",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "8fc522eecde8b13b",
+        "type": "ui_group",
+        "name": "LoginUser",
+        "tab": "667c72804dc6e7d4",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "481fa8bb3da04866",
+        "type": "ui_tab",
+        "name": "Admin",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "667c72804dc6e7d4",
+        "type": "ui_tab",
+        "name": "User",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    }
+]

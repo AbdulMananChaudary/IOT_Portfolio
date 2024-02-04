@@ -1,0 +1,582 @@
+[
+    {
+        "id": "140f73946055e878",
+        "type": "link out",
+        "z": "cbeb043f8b622079",
+        "name": "link out 29",
+        "mode": "link",
+        "links": [
+            "0c1d02d3bff5b69b"
+        ],
+        "x": 515,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "d12dfd2be513dd40",
+        "type": "link out",
+        "z": "cbeb043f8b622079",
+        "name": "link out 30",
+        "mode": "link",
+        "links": [
+            "0c1d02d3bff5b69b"
+        ],
+        "x": 525,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "0c1d02d3bff5b69b",
+        "type": "link in",
+        "z": "cbeb043f8b622079",
+        "name": "link in 18",
+        "links": [
+            "140f73946055e878",
+            "d12dfd2be513dd40"
+        ],
+        "x": 1005,
+        "y": 360,
+        "wires": [
+            [
+                "99dd1bd8c1a4d6b3",
+                "9cbbd294ccb2eba5",
+                "37d69eb87092b1f0"
+            ]
+        ]
+    },
+    {
+        "id": "99dd1bd8c1a4d6b3",
+        "type": "ui_chart",
+        "z": "cbeb043f8b622079",
+        "name": "",
+        "group": "5cbe3419698873e9",
+        "order": 4,
+        "width": 10,
+        "height": 9,
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "bezier",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1110,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9cbbd294ccb2eba5",
+        "type": "ui_chart",
+        "z": "cbeb043f8b622079",
+        "name": "",
+        "group": "5cbe3419698873e9",
+        "order": 5,
+        "width": 10,
+        "height": 9,
+        "label": "chart",
+        "chartType": "bar",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1110,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "37d69eb87092b1f0",
+        "type": "ui_chart",
+        "z": "cbeb043f8b622079",
+        "name": "",
+        "group": "5cbe3419698873e9",
+        "order": 6,
+        "width": 10,
+        "height": 9,
+        "label": "chart",
+        "chartType": "pie",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1110,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "140ffee3eba2ddb8",
+        "type": "group",
+        "z": "cbeb043f8b622079",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "43edcad8986dadbe",
+            "94aaf3ce236755e2",
+            "67f5695c5f491d73",
+            "da44b51283db01b1"
+        ],
+        "x": 194,
+        "y": 39,
+        "w": 772,
+        "h": 202
+    },
+    {
+        "id": "43edcad8986dadbe",
+        "type": "mqtt in",
+        "z": "cbeb043f8b622079",
+        "g": "140ffee3eba2ddb8",
+        "name": "",
+        "topic": "smartGreenhouse/temperature1",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "660b2125339012e5",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 350,
+        "y": 140,
+        "wires": [
+            [
+                "94aaf3ce236755e2",
+                "da44b51283db01b1",
+                "67f5695c5f491d73",
+                "140f73946055e878"
+            ]
+        ]
+    },
+    {
+        "id": "94aaf3ce236755e2",
+        "type": "ui_gauge",
+        "z": "cbeb043f8b622079",
+        "g": "140ffee3eba2ddb8",
+        "name": "Temperature 1",
+        "group": "5cbe3419698873e9",
+        "order": 1,
+        "width": 10,
+        "height": 8,
+        "gtype": "compass",
+        "title": "Temperature 1",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 620,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "67f5695c5f491d73",
+        "type": "file",
+        "z": "cbeb043f8b622079",
+        "g": "140ffee3eba2ddb8",
+        "name": "",
+        "filename": "C:\\UCADevIoT23\\iot\\DataExtraction\\temperature1.csv",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 740,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "da44b51283db01b1",
+        "type": "http request",
+        "z": "cbeb043f8b622079",
+        "g": "140ffee3eba2ddb8",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "localhost:8484/smartGreenhouse/temperature1",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 610,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "660b2125339012e5",
+        "type": "mqtt-broker",
+        "name": "Emqx Broker",
+        "broker": "broker.emqx.io",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "91e3c14febb2ee7b",
+        "type": "group",
+        "z": "cbeb043f8b622079",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "2d1d660f97a3a4d5",
+            "2b4f3c55e50dfa9a",
+            "b9441990b29896b0",
+            "269a9669061561a4"
+        ],
+        "x": 194,
+        "y": 279,
+        "w": 772,
+        "h": 202
+    },
+    {
+        "id": "2d1d660f97a3a4d5",
+        "type": "mqtt in",
+        "z": "cbeb043f8b622079",
+        "g": "91e3c14febb2ee7b",
+        "name": "",
+        "topic": "smartGreenhouse/temperature2",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "660b2125339012e5",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 350,
+        "y": 380,
+        "wires": [
+            [
+                "2b4f3c55e50dfa9a",
+                "269a9669061561a4",
+                "b9441990b29896b0",
+                "140f73946055e878"
+            ]
+        ]
+    },
+    {
+        "id": "2b4f3c55e50dfa9a",
+        "type": "ui_gauge",
+        "z": "cbeb043f8b622079",
+        "g": "91e3c14febb2ee7b",
+        "name": "Temperature 2",
+        "group": "5cbe3419698873e9",
+        "order": 2,
+        "width": 10,
+        "height": 8,
+        "gtype": "compass",
+        "title": "Temperature 2",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 620,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "b9441990b29896b0",
+        "type": "file",
+        "z": "cbeb043f8b622079",
+        "g": "91e3c14febb2ee7b",
+        "name": "",
+        "filename": "C:\\UCADevIoT23\\iot\\DataExtraction\\temperature2.csv",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 740,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "269a9669061561a4",
+        "type": "http request",
+        "z": "cbeb043f8b622079",
+        "g": "91e3c14febb2ee7b",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "localhost:8484/smartGreenhouse/temperature2",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 610,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4ea155fd9a0f3b40",
+        "type": "group",
+        "z": "cbeb043f8b622079",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "917247703fa86cbb",
+            "11a9be1152e94b3d",
+            "06c54eb887c07c38",
+            "dfd94c25ea7382f7"
+        ],
+        "x": 194,
+        "y": 519,
+        "w": 772,
+        "h": 202
+    },
+    {
+        "id": "917247703fa86cbb",
+        "type": "mqtt in",
+        "z": "cbeb043f8b622079",
+        "g": "4ea155fd9a0f3b40",
+        "name": "",
+        "topic": "smartGreenhouse/temperature3",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "660b2125339012e5",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 350,
+        "y": 620,
+        "wires": [
+            [
+                "11a9be1152e94b3d",
+                "dfd94c25ea7382f7",
+                "06c54eb887c07c38",
+                "d12dfd2be513dd40"
+            ]
+        ]
+    },
+    {
+        "id": "11a9be1152e94b3d",
+        "type": "ui_gauge",
+        "z": "cbeb043f8b622079",
+        "g": "4ea155fd9a0f3b40",
+        "name": "Temperature 3",
+        "group": "5cbe3419698873e9",
+        "order": 3,
+        "width": 10,
+        "height": 8,
+        "gtype": "compass",
+        "title": "Temperature 3",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 620,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "06c54eb887c07c38",
+        "type": "file",
+        "z": "cbeb043f8b622079",
+        "g": "4ea155fd9a0f3b40",
+        "name": "",
+        "filename": "C:\\UCADevIoT23\\iot\\DataExtraction\\temperature3.csv",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 740,
+        "y": 680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dfd94c25ea7382f7",
+        "type": "http request",
+        "z": "cbeb043f8b622079",
+        "g": "4ea155fd9a0f3b40",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "localhost:8484/smartGreenhouse/temperature3",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 610,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5cbe3419698873e9",
+        "type": "ui_group",
+        "name": "My Temperature ",
+        "tab": "597a508cfc2ac305",
+        "order": 1,
+        "disp": true,
+        "width": 30,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "597a508cfc2ac305",
+        "type": "ui_tab",
+        "name": "H - Home ",
+        "icon": "dashboard",
+        "order": 3,
+        "disabled": false,
+        "hidden": false
+    }
+]
