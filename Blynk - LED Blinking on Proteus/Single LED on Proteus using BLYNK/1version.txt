@@ -1,8 +1,0 @@
-Product       : Free Virtual Serial Ports Emulator
-Version       : 0.865.2.911
-Release date  : Sep 17, 2008
-
-© 2008 Eterlogic Software. All rights reserved.
-
-Please visit our web page: http://www.eterlogic.com
-Thank you for using Eterlogic Software products!

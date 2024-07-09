@@ -1,3 +1,0 @@
-#define BLYNK_TEMPLATE_ID "TMPLvKzTF_nx"
-#define BLYNK_DEVICE_NAME "Proteus"
-#define BLYNK_AUTH_TOKEN "y8LwpjuH1TOMHw0x8oEw-ILfjK-TdPw8"
