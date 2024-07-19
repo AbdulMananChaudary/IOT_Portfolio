@@ -1,0 +1,35 @@
+Hardware Integration:
+✔️ESP32 Microcontroller for central processing
+✔️SD Card Reader for expandable audio storage
+✔️Audio Amplifier for clear sound output
+✔️Battery power supply (extendable with optimization)
+
+Cloud Connectivity:
+✔️Integration with AWS Cloud Services (S3) for remote file storage and access
+✔️Secure and efficient data transfer using HTTP communication protocol
+
+Mobile App Development:
+✔️Native Android and iOS applications for user-friendly audio recording
+✔️Seamless upload of recorded audio files to AWS cloud storage using AWS SDKs
+
+Functionality:
+✔️Store and playback audio files from SD card and cloud storage
+✔️User interaction through mobile app for recording and uploading audio
+✔️Compact and efficient design (PCB layout completed)
+
+Embedded Systems Development (ESP32)
+✔️SD Card Integration
+✔️Audio Processing and Amplification
+✔️Cloud Services Integration (AWS)
+✔️HTTP Communication Protocols
+
+Project Deliverables:
+✅ Functional VoiceBook prototype with hardware components and mobile app
+✅ Codebase for embedded system and mobile applications
+✅ PCB design layout
+
+Benefits:
+✅ Efficient audio management system with remote access
+✅ User-friendly recording and playback functionalities
+✅ Scalable storage capacity with cloud integration
+✅ Compact design suitable for various applications
