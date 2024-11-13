@@ -66,7 +66,7 @@ I am always open to collaboration, open-source contributions, and discussions on
 
 - **LinkedIn**: [LinkedIn Profile](https://www.linkedin.com/in/abdul-manan-iot/)
 - **Email**: [Email](abdulmananchaudary@gmail.com)
-- **Fiverr**: [Fiverr]((https://www.fiverr.com/abdulmananch18))
+- **Fiverr**: [Fiverr](https://www.fiverr.com/abdulmananch18)
 - **Upwork**: [Upwork](https://www.upwork.com/freelancers/~015e579260aedf39c0) 
 
 ---
